@@ -1,0 +1,49 @@
+{
+  "Root": {},
+  "Header": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "talks": "Talks",
+    "newsletter": "Newsletter",
+    "about": "About",
+    "contact": "Contact",
+    "becomeMember": "Become Member"
+  },
+  "Footer": {
+    "home": "Home",
+    "blog": "Blog",
+    "talks": "Talks",
+    "newsletter": "Newsletter",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "Home": {
+    "greeting": "I'm Marcos Bérgamo",
+    "work-title": "Software Architect at ",
+    "company": "EPAM Systems",
+    "description": "I'm a writer, mostly software writer, but used to write some poetry and many short stories (not all of them finished 😢)"
+  },
+  "Blog": {
+    "title": "Learn, Practice and Share",
+    "subtitle": "This is the place where I share my thoughs and my learnings in public"
+  },
+  "Post": {
+    "readingTime": "{time, number} min read"
+  },
+  "Projects": {
+    "title": "Projects"
+  },
+  "Talks": {
+    "title": "Talks"
+  },
+  "Newsletter": {
+    "title": "Newsletter"
+  },
+  "About": {
+    "title": "About"
+  },
+  "Contact": {
+    "title": "Contact"
+  }
+}
