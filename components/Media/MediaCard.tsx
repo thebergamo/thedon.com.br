@@ -1,33 +1,32 @@
-import Link from 'next/link';
-import cn from 'classnames';
-import { useRouter } from 'next/router';
-import { Calendar } from 'components/Icons/Calendar';
-import { formatDate } from 'utils/formatDate';
-import { Download } from 'components/Icons/Download';
-import serialize from 'utils/serializeRichText';
+import Link from 'next/link'
+import cn from 'classnames'
+import { useRouter } from 'next/router'
+import { Calendar } from 'components/Icons/Calendar'
+import { formatDate } from 'utils/formatDate'
+import { Download } from 'components/Icons/Download'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogTrigger
-} from 'components/Dialog/Dialog';
-import { DialogTitle } from '@radix-ui/react-dialog';
-import { formatSize } from 'utils/formatSize';
+  DialogTrigger,
+} from 'components/Dialog/Dialog'
+import { DialogTitle } from '@radix-ui/react-dialog'
+import { formatSize } from 'utils/formatSize'
 
 type Props = {
-  filename: string;
-  alt: string;
-  description: any;
-  filesize: number;
-  updatedAt: string;
-};
+  filename: string
+  alt: string
+  description: any
+  filesize: number
+  updatedAt: string
+}
 
 export default function MediaCard({
   filename,
   alt,
   description,
   filesize,
-  updatedAt
+  updatedAt,
 }: Props) {
   return (
     <Dialog>
@@ -45,7 +44,7 @@ export default function MediaCard({
       <DialogContent>
         <DialogTitle className="text-3xl">Download {alt}</DialogTitle>
         <DialogDescription className="text-2xl my-4">
-          {serialize(description)}
+          {description}
         </DialogDescription>
         <div className="flex flex-col md:flex-row justify-between">
           <Download />
@@ -55,5 +54,5 @@ export default function MediaCard({
         </div>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

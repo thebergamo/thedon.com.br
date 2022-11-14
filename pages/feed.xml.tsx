@@ -1,37 +1,39 @@
-import { fetchPosts } from 'api/posts';
-import RSS from 'rss';
+import { fetchPosts } from 'api/posts'
+import RSS from 'rss'
 
+/* @ts-ignore */
 export async function getServerSideProps({ res }) {
   const feed = new RSS({
     title: 'Marcos Bérgamo',
     site_url: 'https://thedon.com.br',
-    feed_url: 'https://thedon.com.br/feed.xml'
-  });
+    feed_url: 'https://thedon.com.br/feed.xml',
+  })
 
-  const allPosts = await fetchPosts({ limit: 1000 });
-  allPosts.docs.forEach((post) => {
-    feed.item({
-      title: post.title,
-      url: `https://thedon.com.br/blog/${post.slug}`,
-      date: post.publishedDate,
-      description: post.excerpt
-    });
-  });
+  const allPosts = await fetchPosts({ limit: 1000 })
+  // /* @ts-ignore */
+  // allPosts.docs.forEach((post) => {
+  //   feed.item({
+  //     title: post.title,
+  //     url: `https://thedon.com.br/blog/${post.slug}`,
+  //     date: post.publishedDate,
+  //     description: post.excerpt,
+  //   })
+  // })
 
-  res.setHeader('Content-Type', 'application/rss+xml');
+  res.setHeader('Content-Type', 'application/rss+xml')
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=1200, stale-while-revalidate=600'
-  );
+  )
 
-  res.write(feed.xml({ indent: true }));
-  res.end();
+  res.write(feed.xml({ indent: true }))
+  res.end()
 
   return {
-    props: {}
-  };
+    props: {},
+  }
 }
 
 export default function RSSFeed() {
-  return null;
+  return null
 }

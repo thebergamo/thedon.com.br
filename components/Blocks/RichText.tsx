@@ -1,19 +1,18 @@
-import React from 'react';
-import serialize from 'utils/serializeRichText';
+import React from 'react'
 
 const RichText: React.FC<{ className?: string; content: any }> = ({
   className,
-  content
+  content,
 }) => {
   if (!content) {
-    return null;
+    return null
   }
 
   return (
     <div className={['mb-4', className].filter(Boolean).join(' ')}>
-      {serialize(content)}
+      {content}
     </div>
-  );
-};
+  )
+}
 
-export default RichText;
+export default RichText
