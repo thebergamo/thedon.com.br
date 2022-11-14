@@ -1,17 +1,17 @@
-import pick from "lodash/pick";
-import { GetServerSideProps, GetStaticPropsContext } from "next";
-import Root from "components/Layout/Root";
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { FeaturedPosts } from "components/Blocks/FeaturedPosts";
-import { getPostBySlug } from "lib/blog";
+import pick from 'lodash/pick'
+import { GetServerSideProps, GetStaticPropsContext } from 'next'
+import Root from 'components/Layout/Root'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { FeaturedPosts } from 'components/Blocks/FeaturedPosts'
+import { getPostBySlug } from 'lib/blog'
 
 export type Props = {
-  featuredPosts: any[];
-};
+  featuredPosts: any[]
+}
 
 function HomePage(props: Props) {
-  const t = useTranslations("Home");
+  const t = useTranslations('Home')
   return (
     <div className="w-full flex flex-col">
       <section className="mb-16 flex flex-col lg:flex-row lg:text-left text-center items-center">
@@ -24,37 +24,37 @@ function HomePage(props: Props) {
           />
         </div>
         <div className="flex flex-col">
-          <h1>{t("greeting")}</h1>
+          <h1>{t('greeting')}</h1>
           <h2 className="text-gray-700 dark:text-gray-200 text-lg mb-4">
-            {t("work-title")}
-            <span className="font-semibold">{t("company")}</span>
+            {t('work-title')}
+            <span className="font-semibold">{t('company')}</span>
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-lg">
-            {t("description")}
+            {t('description')}
           </p>
         </div>
       </section>
       <FeaturedPosts blockName="Featured Posts" posts={props.featuredPosts} />
     </div>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage
 
-HomePage.messages = ["Home", "Post", ...Root.messages];
+HomePage.messages = ['Home', 'Post', ...Root.messages]
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const featuredParams = [
-    "date",
-    "slug",
-    "title",
-    "image",
-    "content",
-    "description",
-  ];
+    'date',
+    'slug',
+    'title',
+    'image',
+    'content',
+    'description',
+  ]
   const featuredPosts = [
-    getPostBySlug("generate-social-images-as-a-service", featuredParams),
-  ];
+    getPostBySlug('generate-social-images-as-a-service', featuredParams),
+  ]
   return {
     props: {
       featuredPosts,
@@ -63,5 +63,5 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
         HomePage.messages
       ),
     },
-  };
+  }
 }

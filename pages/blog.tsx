@@ -1,20 +1,20 @@
-import pick from "lodash/pick";
-import { GetServerSideProps, GetStaticPropsContext } from "next";
-import Root from "components/Layout/Root";
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { FeaturedPosts } from "components/Blocks/FeaturedPosts";
-import { getAllPosts, getPostBySlug } from "lib/blog";
-import { Subscribe } from "components/Subscribe";
-import { PostList } from "components/Blocks/PostList";
+import pick from 'lodash/pick'
+import { GetServerSideProps, GetStaticPropsContext } from 'next'
+import Root from 'components/Layout/Root'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { FeaturedPosts } from 'components/Blocks/FeaturedPosts'
+import { getAllPosts, getPostBySlug } from 'lib/blog'
+import { Subscribe } from 'components/Subscribe'
+import { PostList } from 'components/Blocks/PostList'
 
 export type Props = {
-  featuredPosts: any[];
-  allPosts: any[];
-};
+  featuredPosts: any[]
+  allPosts: any[]
+}
 
 function BlogPage(props: Props) {
-  const t = useTranslations("Blog");
+  const t = useTranslations('Blog')
   return (
     <div className="w-full flex flex-col">
       <section className="mb-16 flex flex-col lg:flex-row lg:text-left text-center items-center">
@@ -28,44 +28,44 @@ function BlogPage(props: Props) {
         </div>
         <div className="flex flex-col">
           <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]">
-            {t("title")}
+            {t('title')}
           </h1>
           <h2 className="text-gray-700 dark:text-gray-200 text-lg mb-4">
-            {t("subtitle")}
+            {t('subtitle')}
           </h2>
         </div>
       </section>
       <FeaturedPosts blockName="Featured Posts" posts={props.featuredPosts} />
       <PostList title="All Posts" posts={props.allPosts} />
     </div>
-  );
+  )
 }
 
-export default BlogPage;
+export default BlogPage
 
-BlogPage.messages = ["Blog", "Post", ...Root.messages];
+BlogPage.messages = ['Blog', 'Post', ...Root.messages]
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const featuredParams = [
-    "date",
-    "slug",
-    "title",
-    "image",
-    "content",
-    "description",
-  ];
+    'date',
+    'slug',
+    'title',
+    'image',
+    'content',
+    'description',
+  ]
   const featuredPosts = [
-    getPostBySlug("the-two-types-of-quality", featuredParams),
-  ];
+    getPostBySlug('generate-social-images-as-a-service', featuredParams),
+  ]
 
   const allPosts = getAllPosts([
-    "date",
-    "skip",
-    "slug",
-    "title",
-    "description",
-    "content",
-  ]);
+    'date',
+    'skip',
+    'slug',
+    'title',
+    'description',
+    'content',
+  ])
   return {
     props: {
       featuredPosts,
@@ -75,5 +75,5 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
         BlogPage.messages
       ),
     },
-  };
+  }
 }
