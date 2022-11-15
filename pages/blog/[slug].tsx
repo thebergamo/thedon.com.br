@@ -1,38 +1,34 @@
-import pick from "lodash/pick";
-import { GetServerSideProps, GetStaticPropsContext } from "next";
-import Root from "components/Layout/Root";
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { FeaturedPosts } from "components/Blocks/FeaturedPosts";
-import { convertMarkdownToHtml, getAllPosts, getPostBySlug } from "lib/blog";
-import { Subscribe } from "components/Subscribe";
-import { PostList } from "components/Blocks/PostList";
-import PostLayout from "components/Layout/PostLayout";
-import { ReactElement } from "react";
+import pick from 'lodash/pick'
+import { GetStaticPropsContext } from 'next'
+import Root from 'components/Layout/Root'
+import { useTranslations } from 'next-intl'
+import { convertMarkdownToHtml, getAllPosts, getPostBySlug } from 'lib/blog'
+import PostLayout from 'components/Layout/PostLayout'
+import { ReactElement } from 'react'
 
 export type Props = {
-  errorCode?: number;
-  post: any;
-};
+  errorCode?: number
+  post: any
+}
 
 function BlogPage({ post, errorCode }: Props) {
-  const t = useTranslations("Blog");
+  const t = useTranslations('Blog')
 
   if (errorCode) {
     return (
       <>
         <h1>Oh no! ;(</h1>
       </>
-    );
+    )
   }
 
-  const title = `${post.title} // Zeno Rocha`;
-  const description = post.description || "";
-  const url = `https://zenorocha.com/${post.slug}`;
-  const date = new Date(post.date).toISOString();
+  const title = `${post.title} // Zeno Rocha`
+  const description = post.description || ''
+  const url = `https://zenorocha.com/${post.slug}`
+  const date = new Date(post.date).toISOString()
   const image = post.image
     ? `https://thedon.com.br${post.image}`
-    : "https://thedon.com.br/static/images/home-opt.jpg";
+    : 'https://thedon.com.br/static/images/home-opt.jpg'
 
   return (
     <div className="w-full flex flex-col">
@@ -41,37 +37,37 @@ function BlogPage({ post, errorCode }: Props) {
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
     </div>
-  );
+  )
 }
 
-export default BlogPage;
+export default BlogPage
 
-BlogPage.messages = ["Blog", "Post", ...Root.messages];
+BlogPage.messages = ['Blog', 'Post', ...Root.messages]
 
 export async function getStaticProps({
   locale,
   params,
 }: GetStaticPropsContext) {
-  let post = null;
-  let errorCode = null;
+  let post = null
+  let errorCode = null
 
   try {
-    const slug = (params?.slug ?? "") as string;
+    const slug = (params?.slug ?? '') as string
 
     post = getPostBySlug(slug, [
-      "canonical_url",
-      "content",
-      "date",
-      "description",
-      "image",
-      "lang",
-      "slug",
-      "title",
-    ]);
+      'canonical_url',
+      'content',
+      'date',
+      'description',
+      'image',
+      'lang',
+      'slug',
+      'title',
+    ])
 
-    post.content = await convertMarkdownToHtml(post.content);
+    post.content = await convertMarkdownToHtml(post.content)
   } catch (err) {
-    errorCode = 404;
+    errorCode = 404
   }
 
   return {
@@ -83,26 +79,26 @@ export async function getStaticProps({
         BlogPage.messages
       ),
     },
-  };
+  }
 }
 
 BlogPage.getLayout = function getLayout(page: ReactElement) {
-  return <PostLayout>{page}</PostLayout>;
-};
+  return <PostLayout>{page}</PostLayout>
+}
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts(['slug'])
 
   const paths = posts.map((post) => ({
     params: {
       slug: post.slug,
     },
-  }));
+  }))
 
-  console.info(paths);
+  console.info(paths)
 
   return {
     paths,
-    fallback: "blocking",
-  };
+    fallback: 'blocking',
+  }
 }

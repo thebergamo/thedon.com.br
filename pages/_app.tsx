@@ -1,20 +1,21 @@
 import '../styles/globals.css'
 
 import { ThemeProvider } from 'next-themes'
-import { getSession, SessionProvider, useSession } from 'next-auth/react'
+import { SessionProvider, useSession } from 'next-auth/react'
 
-import type { AppContext, AppProps } from 'next/app'
-import { GetServerSidePropsContext, NextPage } from 'next'
+import type { AppProps } from 'next/app'
+import { NextPage } from 'next'
 import { PropsWithChildren, ReactElement, ReactNode } from 'react'
 import Root from 'components/Layout/Root'
-import App from 'next/app'
 import { ScrollInfoProvider } from '@faceless-ui/scroll-info'
 import { WindowInfoProvider } from '@faceless-ui/window-info'
-import { Session, unstable_getServerSession } from 'next-auth'
-import { authOptions } from './api/auth/[...nextauth]'
+import { Session } from 'next-auth'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { NextIntlProvider } from 'next-intl'
-import { IntlMessages } from '../globals'
+
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+  require('../mocks')
+}
 
 // Create a client
 const queryClient = new QueryClient()

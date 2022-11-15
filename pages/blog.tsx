@@ -1,11 +1,10 @@
 import pick from 'lodash/pick'
-import { GetServerSideProps, GetStaticPropsContext } from 'next'
+import { GetStaticPropsContext } from 'next'
 import Root from 'components/Layout/Root'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { FeaturedPosts } from 'components/Blocks/FeaturedPosts'
 import { getAllPosts, getPostBySlug } from 'lib/blog'
-import { Subscribe } from 'components/Subscribe'
 import { PostList } from 'components/Blocks/PostList'
 
 export type Props = {

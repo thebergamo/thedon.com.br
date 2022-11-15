@@ -1,5 +1,5 @@
 import pick from 'lodash/pick'
-import { GetServerSideProps, GetStaticPropsContext } from 'next'
+import { GetStaticPropsContext } from 'next'
 import Root from 'components/Layout/Root'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
