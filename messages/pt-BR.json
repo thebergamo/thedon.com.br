@@ -32,7 +32,8 @@
     "readingTime": "{time, number} min read"
   },
   "Projects": {
-    "title": "Projects"
+    "title": "Projetos",
+    "ghProjects": "Projetos do GitHub em destaque"
   },
   "Talks": {
     "title": "Talks"

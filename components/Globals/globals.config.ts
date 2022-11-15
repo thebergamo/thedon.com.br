@@ -31,20 +31,12 @@ const configs: GlobalsConfig = {
       title: 'projects',
     },
     {
-      link: '/talks',
-      title: 'talks',
-    },
-    {
       link: '/newsletter',
       title: 'newsletter',
     },
     {
       link: '/about',
       title: 'about',
-    },
-    {
-      link: '/contact',
-      title: 'contact',
     },
   ],
   footer: [
@@ -57,20 +49,12 @@ const configs: GlobalsConfig = {
       title: 'blog',
     },
     {
-      link: '/talks',
-      title: 'talks',
-    },
-    {
       link: '/newsletter',
       title: 'newsletter',
     },
     {
       link: '/about',
       title: 'about',
-    },
-    {
-      link: '/contact',
-      title: 'contact',
     },
   ],
   socials: [

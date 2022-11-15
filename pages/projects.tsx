@@ -2,9 +2,14 @@ import pick from 'lodash/pick'
 import { GetStaticPropsContext } from 'next'
 import Root from 'components/Layout/Root'
 import { useTranslations } from 'next-intl'
+import { FeaturedElement } from 'components/Blocks/FeaturedElement'
+import { Repo } from 'components/Icons/Repo'
+import Link from 'next/link'
+import classNames from 'classnames'
+import { FeaturedGhProjects } from 'components/Blocks/FeaturedGhProjects'
 
 export type Props = {
-  ghProjects: any[]
+  ghProjects: Repository[]
 }
 
 function ProjectsPage(props: Props) {
@@ -16,14 +21,10 @@ function ProjectsPage(props: Props) {
           <h1>{t('title')}</h1>
         </div>
       </section>
-      <section>
-        <h2>GH Projects</h2>
-        {props.ghProjects.map(({ name }) => (
-          <>
-            <h3>{name}</h3>
-          </>
-        ))}
-      </section>
+      <FeaturedGhProjects
+        blockName={t('ghProjects')}
+        projects={props.ghProjects}
+      />
     </div>
   )
 }
@@ -32,20 +33,12 @@ export default ProjectsPage
 
 ProjectsPage.messages = ['Projects', ...Root.messages]
 
-export async function getServerSideProps() {
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const res = await fetch(`${process.env.BACKEND_API}/github`)
   const ghProjects = await res.json()
-
   return {
     props: {
       ghProjects,
-    },
-  }
-}
-
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  return {
-    props: {
       messages: pick(
         await import(`../messages/${locale}.json`),
         ProjectsPage.messages

@@ -14,12 +14,14 @@ module.exports = {
   //   esmExternals: false,
   // },
   async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders,
-      },
-    ]
+    return process.env.NODE_ENV === 'production'
+      ? [
+          {
+            source: '/(.*)',
+            headers: securityHeaders,
+          },
+        ]
+      : []
   },
 }
 

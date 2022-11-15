@@ -1,23 +1,24 @@
-import Link from "next/link";
-import cn from "classnames";
-import { Calendar } from "components/Icons/Calendar";
-import Image from "next/image";
-import { url } from "inspector";
-import readingTime from "reading-time";
-import { useTranslations } from "next-intl";
+import Link from 'next/link'
+import cn from 'classnames'
+import { Calendar } from 'components/Icons/Calendar'
+import Image from 'next/image'
+import { url } from 'inspector'
+import readingTime from 'reading-time'
+import { useTranslations } from 'next-intl'
+import { Clock } from 'components/Icons/Clock'
 
 export type Post = {
-  date: string;
-  description: string;
-  image: string;
-  title: string;
-  slug: string;
-  content: string;
-};
+  date: string
+  description: string
+  image: string
+  title: string
+  slug: string
+  content: string
+}
 
 type Props = Post & {
-  gradient: string;
-};
+  gradient: string
+}
 
 export default function BlogPostCard({
   title,
@@ -28,14 +29,14 @@ export default function BlogPostCard({
   content,
   gradient,
 }: Props) {
-  const t = useTranslations("Post");
-  const stats = readingTime(content);
+  const t = useTranslations('Post')
+  const stats = readingTime(content)
   return (
     <Link
       href={`/blog/${slug}`}
       className={cn(
-        "transform hover:scale-[1.01] transition-all",
-        "rounded-xl w-full md:w-1/3 bg-gradient-to-r p-1",
+        'transform hover:scale-[1.01] transition-all',
+        'rounded-xl w-full bg-gradient-to-r p-1',
         gradient
       )}
     >
@@ -56,13 +57,13 @@ export default function BlogPostCard({
             <span className="ml-2 align-baseline capsize">{date}</span>
           </div>
           <div className="flex items-center text-gray-800 dark:text-gray-200 capsize">
-            <Calendar />
+            <Clock />
             <span className="ml-2 align-baseline capsize capitalize">
-              {t("readingTime", { time: Math.ceil(stats.minutes) })}
+              {t('readingTime', { time: Math.ceil(stats.minutes) })}
             </span>
           </div>
         </div>
       </div>
     </Link>
-  );
+  )
 }

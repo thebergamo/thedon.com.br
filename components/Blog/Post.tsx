@@ -1,24 +1,25 @@
-import { Calendar } from "components/Icons/Calendar";
-import { useTranslations } from "next-intl";
-import { PropsWithChildren } from "react";
-import readingTime from "reading-time";
+import { Calendar } from 'components/Icons/Calendar'
+import { Clock } from 'components/Icons/Clock'
+import { useTranslations } from 'next-intl'
+import { PropsWithChildren } from 'react'
+import readingTime from 'reading-time'
 
 export const Post: React.FC<PropsWithChildren> = ({ children }) => {
-  return <main className="overflow-hidden flex-1">{children}</main>;
-};
+  return <main className="overflow-hidden flex-1">{children}</main>
+}
 
 export const PostHero: React.FC<PropsWithChildren> = ({ children }) => {
-  return <main className="overflow-hidden flex-1">{children}</main>;
-};
+  return <main className="overflow-hidden flex-1">{children}</main>
+}
 
 export const PostHeader: React.FC<{
-  title: string;
-  image: string;
-  date: string;
-  content: string;
+  title: string
+  image: string
+  date: string
+  content: string
 }> = ({ title, image, date, content }) => {
-  const t = useTranslations("Post");
-  const stats = readingTime(content);
+  const t = useTranslations('Post')
+  const stats = readingTime(content)
   return (
     <div className="w-full h-screen -mb-52">
       <div
@@ -32,20 +33,20 @@ export const PostHeader: React.FC<{
           <span className="ml-2 align-baseline capsize">{date}</span>
         </div>
         <div className="flex items-center text-gray-800 dark:text-gray-200 capsize">
-          <Calendar />
+          <Clock />
           <span className="ml-2 align-baseline capsize capitalize">
-            {t("readingTime", { time: Math.ceil(stats.minutes) })}
+            {t('readingTime', { time: Math.ceil(stats.minutes) })}
           </span>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const PostContent: React.FC<PropsWithChildren> = ({ children }) => {
-  return <article>{children}</article>;
-};
+  return <article>{children}</article>
+}
 
 export const PostContainer: React.FC<PropsWithChildren> = ({ children }) => {
-  return <>{children}</>;
-};
+  return <>{children}</>
+}

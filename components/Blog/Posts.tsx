@@ -1,9 +1,10 @@
-import { Calendar } from "components/Icons/Calendar";
-import { useTranslations } from "next-intl";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import readingTime from "reading-time";
-import { formatDate } from "utils/formatDate";
+import { Calendar } from 'components/Icons/Calendar'
+import { Clock } from 'components/Icons/Clock'
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import readingTime from 'reading-time'
+import { formatDate } from 'utils/formatDate'
 
 export default function BlogPost({
   slug,
@@ -12,14 +13,14 @@ export default function BlogPost({
   publishedDate,
   content,
 }: {
-  slug: string;
-  title: string;
-  excerpt: string;
-  publishedDate: string;
-  content: string;
+  slug: string
+  title: string
+  excerpt: string
+  publishedDate: string
+  content: string
 }) {
-  const t = useTranslations("Post");
-  const stats = readingTime(content);
+  const t = useTranslations('Post')
+  const stats = readingTime(content)
   return (
     <Link href={`/blog/${slug}`} className="w-full">
       <div className="w-full mb-8">
@@ -35,9 +36,9 @@ export default function BlogPost({
               </span>
             </div>
             <div className="flex items-center text-gray-800 dark:text-gray-200 capsize">
-              <Calendar />
+              <Clock />
               <span className="ml-2 align-baseline capsize capitalize">
-                {t("readingTime", { time: Math.ceil(stats.minutes) })}
+                {t('readingTime', { time: Math.ceil(stats.minutes) })}
               </span>
             </div>
           </div>
@@ -45,5 +46,5 @@ export default function BlogPost({
         <span className="text-gray-600 dark:text-gray-400">{excerpt}</span>
       </div>
     </Link>
-  );
+  )
 }

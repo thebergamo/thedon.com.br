@@ -24,7 +24,7 @@ type Issue = {
 
 const github = [
   rest.get(`${process.env.BACKEND_API}/github`, (_req, res, ctx) => {
-    res(
+    return res(
       ctx.json<Repo[]>([
         {
           name: 'start-hapiness',
@@ -111,11 +111,11 @@ const newsletter = [
           },
         ]
       : []
-    res(ctx.json<Issue[]>([...issues, ...draftIssue]))
+    return res(ctx.json<Issue[]>([...issues, ...draftIssue]))
   }),
   rest.post(`${process.env.BACKEND_API}/newsletter`, async (req, res, ctx) => {
     const issue: Issue = await req.json<Issue>()
-    res(
+    return res(
       ctx.status(201),
       ctx.json<Issue>({
         ...issue,
@@ -125,7 +125,7 @@ const newsletter = [
   }),
   rest.get(`${process.env.BACKEND_API}/newsletter/1`, async (req, res, ctx) => {
     const issue: Issue = await req.json<Issue>()
-    res(
+    return res(
       ctx.json<Issue>({
         ...issue,
       })
@@ -133,7 +133,7 @@ const newsletter = [
   }),
   rest.put(`${process.env.BACKEND_API}/newsletter/1`, async (req, res, ctx) => {
     const issue: Issue = await req.json<Issue>()
-    res(
+    return res(
       ctx.json<Issue>({
         ...issue,
       })
@@ -143,7 +143,7 @@ const newsletter = [
     `${process.env.BACKEND_API}/newsletter/1`,
     async (req, res, ctx) => {
       const issue: Partial<Issue> = await req.json<Partial<Issue>>()
-      res(
+      return res(
         ctx.json<Issue>({
           ...issues[0],
           ...issue,
@@ -156,13 +156,13 @@ const newsletter = [
     async (req, res, ctx) => {
       const article = await req.json<Article>()
       issues[0].articles.push(article)
-      res(ctx.status(201), ctx.json<Issue>(issues[0]))
+      return res(ctx.status(201), ctx.json<Issue>(issues[0]))
     }
   ),
   rest.delete(
     `${process.env.BACKEND_API}/newsletter/1/article/2`,
     async (_req, res, ctx) => {
-      res(ctx.json<Issue>(issues[0]))
+      return res(ctx.json<Issue>(issues[0]))
     }
   ),
 ]
