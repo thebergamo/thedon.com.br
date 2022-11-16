@@ -26,7 +26,7 @@ specifiers:
   http-proxy-middleware: ^2.0.6
   husky: ^8.0.2
   lodash: ^4.17.21
-  msw: 0.47.2
+  msw: 0.48.3
   next: 13.0.0
   next-auth: ^4.15.0
   next-intl: ^2.9.1
@@ -92,7 +92,7 @@ devDependencies:
   eslint: 8.26.0
   eslint-config-next: 13.0.0_wyqvi574yv7oiwfeinomdzmc3m
   husky: 8.0.2
-  msw: 0.47.2_typescript@4.8.4
+  msw: 0.48.3_typescript@4.8.4
   postcss: 8.4.18
   prettier: 2.7.1
   tailwindcss: 0.0.0-insiders.2cd6fad_postcss@8.4.18
@@ -3198,8 +3198,8 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
 
-  /msw/0.47.2_typescript@4.8.4:
-    resolution: {integrity: sha512-6bj8Vkghu+SpF8XOskezE92Mbg92Dc+OIArzW087bzvs5zMWKXyYfU5Ni2YS3Psdx6IVSaV3kzsEvFrbAoHz3g==}
+  /msw/0.48.3_typescript@4.8.4:
+    resolution: {integrity: sha512-8ENBcX7JVWPA5v9WTeOnCWCMOVtyBiXZyD/0+AKlhOysJRB1ZdBAcMGLIiQ2/VpQ2lC0Yd7SFKg9aviAQSVeaw==}
     engines: {node: '>=14'}
     hasBin: true
     requiresBuild: true
@@ -3225,7 +3225,6 @@ packages:
       node-fetch: 2.6.7
       outvariant: 1.3.0
       path-to-regexp: 6.2.1
-      statuses: 2.0.1
       strict-event-emitter: 0.2.8
       type-fest: 2.19.0
       typescript: 4.8.4
@@ -4205,11 +4204,6 @@ packages:
 
   /state-toggle/1.0.3:
     resolution: {integrity: sha512-d/5Z4/2iiCnHw6Xzghyhb+GcmF89bxwgXG60wjIiZaxnymbyOmI8Hk4VqHXiVVp6u2ysaskFfXg3ekCj4WNftQ==}
-    dev: true
-
-  /statuses/2.0.1:
-    resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
-    engines: {node: '>= 0.8'}
     dev: true
 
   /strict-event-emitter/0.2.8:
