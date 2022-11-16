@@ -1,5 +1,3 @@
-import { Messages } from '../../globals'
-
 type PageLink<GlobalType> = {
   link: string
   title: GlobalType

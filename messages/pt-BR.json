@@ -32,17 +32,26 @@
     "readingTime": "{time, number} min read"
   },
   "Projects": {
-    "title": "Projetos",
-    "ghProjects": "Projetos do GitHub em destaque"
+    "title": "Projects",
+    "ghProjects": "Featured GitHub Projects"
   },
   "Talks": {
     "title": "Talks"
   },
   "Newsletter": {
-    "title": "Newsletter"
+    "title": "Newsletter",
+    "subtitle": "I have collected the most interesting links on the internet related to some of my interests.\nTake a look and share with me your feedback ",
+    "latest": "Check out the latest newsletter"
   },
   "About": {
-    "title": "About"
+    "title": "Nice to meet you!",
+    "welcome": "My name is Marcos Bérgamo",
+    "short-intro": "I could write a big essay about myself but it wouldn't catch your attention, probably because it would be too boring, so I will try to just catch some facts that you may find interesting.",
+    "professional-title": "Professional Experience",
+    "professional-description": "I've been working as a Software Engineer since 2011 helping companies to deliver high quality solutions in different areas. \n\nYou can check my resume if you're interested in those adventures :)",
+    "writings-title": "Writings",
+    "writings-description": "As I mentioned in the homepage, I'm also a writer, not only software one, but in my teenage I wrote dozens of Poems and many other short chronicles and other types of short stories.\n\nOriginally they where posted in two blogs that I created early on, design is terrible, it was my first experience with the internet as a thing.\n(Both blogs are in Portuguese)",
+    "book-description": "From the Poems above I collect them and made a book under my pseudonym Vinicius Bérgamo (Just because I'm fan of Vinicius de Moraes as we share some name, thought it would be a good idea)"
   },
   "Contact": {
     "title": "Contact"
