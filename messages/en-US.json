@@ -8,6 +8,7 @@
     "newsletter": "Newsletter",
     "about": "About",
     "contact": "Contact",
+    "admin": "Admin",
     "becomeMember": "Become Member"
   },
   "Footer": {
@@ -42,6 +43,23 @@
     "title": "Newsletter",
     "subtitle": "I have collected the most interesting links on the internet related to some of my interests.\nTake a look and share with me your feedback ",
     "latest": "Check out the latest newsletter"
+  },
+  "Admin": {
+    "title": "Admin",
+    "create": "New Issue",
+    "edit": "Edit",
+    "delete": "Delete",
+    "actions": "Actions"
+  },
+  "Issue": {
+    "title": "Title",
+    "publishedDate": "Published Date"
+  },
+  "CreateNewsletter": {
+    "title": "Create Issue"
+  },
+  "UpdateNewsletter": {
+    "title": "Update Newsletter"
   },
   "About": {
     "title": "Nice to meet you!",

@@ -1,11 +1,11 @@
-import { ButtonHTMLAttributes, PropsWithChildren, ReactNode } from 'react';
-import { Loading } from '../../components/Icons/Loading';
+import { ButtonHTMLAttributes, PropsWithChildren, ReactNode } from 'react'
+import { Loading } from '../../components/Icons/Loading'
 
 interface Props {
-  type: ButtonHTMLAttributes<HTMLButtonElement>['type'];
-  Icon: ReactNode;
-  isLoading: boolean;
-  onClick?: () => void;
+  type: ButtonHTMLAttributes<HTMLButtonElement>['type']
+  Icon: ReactNode
+  isLoading: boolean
+  onClick?: () => void
 }
 
 export const LoadableButton: React.FC<PropsWithChildren<Props>> = ({
@@ -13,7 +13,7 @@ export const LoadableButton: React.FC<PropsWithChildren<Props>> = ({
   Icon,
   onClick,
   isLoading,
-  children
+  children,
 }) => {
   return (
     <button
@@ -29,5 +29,21 @@ export const LoadableButton: React.FC<PropsWithChildren<Props>> = ({
       </span>
       {children}
     </button>
-  );
-};
+  )
+}
+
+export const LoadableAction: React.FC<
+  PropsWithChildren<Omit<Props, 'type'>>
+> = ({ onClick, isLoading, Icon, children }) => {
+  return (
+    <button
+      type="button"
+      className="flex hover:text-gray-400 disabled:cursor-progress disabled:bg-indigo-300"
+      onClick={onClick}
+      disabled={isLoading}
+    >
+      <span className="w-5 h-5 mr-2">{isLoading ? <Loading /> : Icon}</span>
+      {children}
+    </button>
+  )
+}

@@ -1,11 +1,13 @@
-import LoginForm from 'components/Auth/LoginForm';
-import { AuthLayout } from 'components/Layout/AuthLayout';
-import { ReactElement } from 'react';
-import type { NextPageWithLayout } from '../_app';
+import pick from 'lodash/pick'
+import { GetStaticPropsContext } from 'next'
+import LoginForm from 'components/Auth/LoginForm'
+import { AuthLayout } from 'components/Layout/AuthLayout'
+import { ReactElement } from 'react'
+import RootLayout from 'components/Layout/Root'
 
-const SignIn: NextPageWithLayout = () => {
-  return <LoginForm />;
-};
+function SignIn() {
+  return <LoginForm />
+}
 
 SignIn.getLayout = function getLayout(page: ReactElement) {
   return (
@@ -16,7 +18,20 @@ SignIn.getLayout = function getLayout(page: ReactElement) {
     >
       {page}
     </AuthLayout>
-  );
-};
+  )
+}
 
-export default SignIn;
+SignIn.messages = ['SignIn', ...RootLayout.messages]
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: pick(
+        await import(`../../messages/${locale}.json`),
+        SignIn.messages
+      ),
+    },
+  }
+}
+
+export default SignIn

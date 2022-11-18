@@ -31,7 +31,7 @@ function BlogPage({ post, errorCode }: Props) {
     : 'https://thedon.com.br/static/images/home-opt.jpg'
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="container flex flex-col">
       <div
         className="prose dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: post.content }}

@@ -1,33 +1,37 @@
-import { Exit } from 'components/Icons/Exit';
-import { Person } from 'components/Icons/Person';
+import { Exit } from 'components/Icons/Exit'
+import { Person } from 'components/Icons/Person'
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from 'components/Popover/Popover';
-import { signOut, useSession } from 'next-auth/react';
-import Link from 'next/link';
+  PopoverTrigger,
+} from 'components/Popover/Popover'
+import { signOut, useSession } from 'next-auth/react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-function Avatar() {
+function Avatar({
+  name,
+  image,
+}: {
+  name?: string | null
+  image?: string | null
+}) {
   return (
     <Popover>
       <div className="flex -space-x-1 center">
         <PopoverTrigger asChild>
-          <div className="flex h-8 w-8 rounded-full ring-2 ring-dark dark:ring-white bg-black dark:bg-white justify-center items-center">
-            <p className="text-sm text-white dark:text-black">MB</p>
+          <div className="flex h-8 w-8 rounded-full overflow-hidden ring-2 ring-dark dark:ring-white bg-black dark:bg-white justify-center items-center">
+            <Image
+              src={image || ''}
+              alt={`Github profile image of ${name}`}
+              width={460}
+              height={460}
+            />
           </div>
         </PopoverTrigger>
         <PopoverContent sideOffset={5}>
           <>
-            <Link
-              href="#"
-              className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-200 dark:hover:bg-gray-700"
-            >
-              <Person />
-              <div className="ml-4">
-                <p className="text-base font-medium">My Profile</p>
-              </div>
-            </Link>
+            <p className="text-gray-200 pb-4 border-b-2">{name}</p>
             <button
               onClick={() => signOut()}
               className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -41,7 +45,7 @@ function Avatar() {
         </PopoverContent>
       </div>
     </Popover>
-  );
+  )
 }
 
 function BecomeMember() {
@@ -52,18 +56,26 @@ function BecomeMember() {
     >
       Become a member
     </Link>
-  );
+  )
 }
 
 export function AvatarStatus() {
-  const { status } = useSession();
-  const isAuthenticated = status === 'authenticated';
-  const isLoading = status === 'loading';
+  const { status, data } = useSession()
+  const isAuthenticated = status === 'authenticated'
+  const isLoading = status === 'loading'
   if (isLoading) {
-    return null;
+    return null
   }
 
+  console.log('data', { data })
+
   return (
-    <div className="">{isAuthenticated ? <Avatar /> : <BecomeMember />}</div>
-  );
+    <div className="">
+      {isAuthenticated ? (
+        <Avatar name={data?.user?.name} image={data?.user?.image} />
+      ) : (
+        <BecomeMember />
+      )}
+    </div>
+  )
 }

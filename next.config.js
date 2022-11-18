@@ -3,16 +3,12 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'avatars.githubusercontent.com'],
   },
   i18n: {
     locales: ['en-US', 'pt-BR'],
     defaultLocale: 'en-US',
   },
-  // TODO: Once merged remove this experimental fixup https://github.com/mswjs/msw/pull/1458
-  // experimental: {
-  //   esmExternals: false,
-  // },
   async headers() {
     return process.env.NODE_ENV === 'production'
       ? [

@@ -29,11 +29,12 @@ function NewsletterPage(props: Props) {
 export default NewsletterPage
 
 NewsletterPage.messages = ['Newsletter', ...Root.messages]
+NewsletterPage.auth = true
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   let issues = []
-  if (process.env.BACKEND_API) {
-    const res = await fetch(`${process.env.BACKEND_API}/newsletter`)
+  if (process.env.NEXT_PUBLIC_BACKEND_API) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/newsletter`)
     issues = await res.json()
   }
   return {

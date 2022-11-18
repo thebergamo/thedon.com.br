@@ -9,6 +9,7 @@ specifiers:
   '@tailwindcss/line-clamp': ^0.4.2
   '@tailwindcss/typography': ^0.5.7
   '@tanstack/react-query': ^4.13.0
+  '@tanstack/react-table': ^8.5.30
   '@types/escape-html': ^1.0.2
   '@types/lodash': ^4.14.188
   '@types/node': 18.11.7
@@ -57,6 +58,7 @@ dependencies:
   '@tailwindcss/line-clamp': 0.4.2_c7iyylcn35txmz4atvfxidkrdu
   '@tailwindcss/typography': 0.5.7_c7iyylcn35txmz4atvfxidkrdu
   '@tanstack/react-query': 4.13.0_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-table': 8.5.30_biqbaboplfbrettd7655fr4n2y
   classnames: 2.3.2
   cmdk: 0.1.20_knhnagtyfncgg2hpin7s37uixq
   escape-html: 1.0.3
@@ -851,6 +853,23 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
+
+  /@tanstack/react-table/8.5.30_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-CyzVzd6T5qO2aznyHsjlKgY5Zy9YYd61EtnJjI8o9ibgiurCAUN6QMGsvKPpdu+MVbqEtzkd3sjbhN2BNbj8Og==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.5.30
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@tanstack/table-core/8.5.30:
+    resolution: {integrity: sha512-3IhJVOpX7EDiAa2BcXowEJHOflmGI/hHhVY8UpEmtNxvDWo2QK7ohSXPndz35GK36mNoMXX4a5UA9BbVU1A0aw==}
+    engines: {node: '>=12'}
     dev: false
 
   /@tootallnate/once/1.1.2:

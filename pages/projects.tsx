@@ -35,8 +35,8 @@ ProjectsPage.messages = ['Projects', ...Root.messages]
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   let ghProjects = []
-  if (process.env.BACKEND_API) {
-    const res = await fetch(`${process.env.BACKEND_API}/github`)
+  if (process.env.NEXT_PUBLIC_BACKEND_API) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/github`)
     ghProjects = await res.json()
   }
   return {

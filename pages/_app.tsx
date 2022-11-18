@@ -12,6 +12,7 @@ import { WindowInfoProvider } from '@faceless-ui/window-info'
 import { Session } from 'next-auth'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { NextIntlProvider } from 'next-intl'
+import { useRouter } from 'next/router'
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
   require('../mocks')
@@ -22,6 +23,7 @@ const queryClient = new QueryClient()
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
+  auth?: boolean
 }
 
 type PageProps = {
@@ -47,13 +49,14 @@ function MyApp({
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page) => page)
+  const authenticated = Component.auth || false
   return (
     <ScrollInfoProvider>
       <WindowInfoProvider breakpoints={breakpoints}>
         <QueryClientProvider client={queryClient}>
           <SessionProvider session={session}>
             <ThemeProvider attribute="class">
-              <SessionAware>
+              <SessionAware authRoute={authenticated}>
                 <NextIntlProvider messages={pageProps.messages}>
                   <Root>{getLayout(<Component {...pageProps} />)}</Root>
                 </NextIntlProvider>
@@ -66,10 +69,19 @@ function MyApp({
   )
 }
 
-const SessionAware: React.FC<PropsWithChildren> = ({ children }) => {
+const SessionAware: React.FC<PropsWithChildren<{ authRoute: boolean }>> = ({
+  children,
+  authRoute,
+}) => {
+  const { push } = useRouter()
   const { status } = useSession()
 
   if (status === 'loading') {
+    return null
+  }
+
+  if (authRoute && status !== 'authenticated') {
+    push('404')
     return null
   }
 

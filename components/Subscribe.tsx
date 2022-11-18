@@ -2,11 +2,13 @@ import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
+import { useRouter } from 'next/router'
 
 export const Subscribe = () => {
+  const { pathname } = useRouter()
   const { status } = useSession()
 
-  if (status === 'authenticated') {
+  if (status === 'authenticated' || pathname.startsWith('/auth')) {
     return null
   }
 

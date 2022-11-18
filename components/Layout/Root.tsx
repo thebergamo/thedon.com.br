@@ -1,18 +1,18 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
-import { Header } from "components/Globals/Header";
-import Footer from "components/Globals/Footer";
-import { PropsWithChildren } from "react";
-import { Subscribe } from "components/Subscribe";
+import { Header } from 'components/Globals/Header'
+import Footer from 'components/Globals/Footer'
+import { PropsWithChildren } from 'react'
+import { Subscribe } from 'components/Subscribe'
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  const router = useRouter();
+  const router = useRouter()
   const meta = {
-    title: "Marcos Bérgamo",
+    title: 'Marcos Bérgamo',
     description: `Writer, mostly software writer`,
-    type: "website",
-  };
+    type: 'website',
+  }
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
@@ -54,7 +54,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Footer />
       </main>
     </div>
-  );
+  )
 }
 
-RootLayout.messages = ["Root", ...Header.messages, ...Footer.messages];
+RootLayout.messages = ['Root', ...Header.messages, ...Footer.messages]

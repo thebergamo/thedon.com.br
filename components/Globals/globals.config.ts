@@ -1,5 +1,6 @@
 type PageLink<GlobalType> = {
   link: string
+  auth?: boolean
   title: GlobalType
 }
 
@@ -31,6 +32,12 @@ const configs: GlobalsConfig = {
     {
       link: '/newsletter',
       title: 'newsletter',
+      auth: true,
+    },
+    {
+      link: '/admin',
+      title: 'admin',
+      auth: true,
     },
     {
       link: '/about',
@@ -49,6 +56,7 @@ const configs: GlobalsConfig = {
     {
       link: '/newsletter',
       title: 'newsletter',
+      auth: true,
     },
     {
       link: '/about',
