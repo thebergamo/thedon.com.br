@@ -34,7 +34,9 @@ NewsletterPage.auth = true
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   let issues = []
   if (process.env.NEXT_PUBLIC_BACKEND_API) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/newsletter`)
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API}/newsletters`
+    )
     issues = await res.json()
   }
   return {
