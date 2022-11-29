@@ -5,13 +5,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Install dependencies - I recommend to use [PNPM](https://pnpm.io/) instead of NPM as it has better performance and module resolution.
 If you don't have it, get take a look into its [installation page](https://pnpm.io/installation) (its simple)
 
-```
+```sh
 pnpm install
 ```
 
 First, run the development server:
 
-```bash
+```sh
 pnpm run dev
 ```
 
@@ -24,11 +24,13 @@ To learn more about Next.js, take a look at the following resources:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Next.js provides a nice out-of-the-box structure to run our react projects besides having a really powerful server side and static rendering for most pages and combined with Vercel is a quick win for performance and best practices all together.
 
 This project also uses TailwindCSS, take a look at the following resources:
 
 - [TailwindCSS Documentation](https://tailwindcss.com/) - Check it out the endpoints
+
+Tailwind helps to avoid complex CSS code and having to deal with the specificity directly, of course other techniques could be used such as [BEM](https://getbem.com/introduction/) and [CSS Modules](https://github.com/css-modules/css-modules), but in general in my project inside my current project we're already using it and it have proven being very useful in production and battle tested also.
 
 To make running things locally easier, it also uses MSW (Mock Service Worker) to provide mocks to external APIs
 
