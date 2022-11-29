@@ -1,0 +1,11 @@
+{
+  "extends": ["eslint:recommended", "next/core-web-vitals"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
+}

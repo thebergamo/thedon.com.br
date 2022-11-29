@@ -1,0 +1,110 @@
+{
+  "Root": {},
+  "Header": {
+    "home": "Inicio",
+    "blog": "Blog",
+    "projects": "Projetos",
+    "talks": "Palestras",
+    "newsletter": "Newsletter",
+    "about": "Sobre",
+    "contact": "Contato",
+    "admin": "Admin",
+    "becomeMember": "Tornar-se Membro"
+  },
+  "404": {
+    "title": "Eita ;(",
+    "missing": "Relaxa, isso acontece... Normalmente eu também fico perdido",
+    "suggestion": "Dá uma respirada fundo e tenta voltar para página principal denovo"
+  },
+  "Footer": {
+    "home": "Home",
+    "blog": "Blog",
+    "talks": "Palestras",
+    "newsletter": "Newsletter",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "Home": {
+    "greeting": "Eu sou Marcos Bérgamo",
+    "work-title": "Software Architect na ",
+    "company": "EPAM Systems",
+    "description": "Eu sou um escritor, na maior parte das vezes, escritor de software, mas já escrevi alguns poemas e contos (nem todos finalizados 😢)"
+  },
+  "Blog": {
+    "title": "Aprender, Praticar e Compartilhar",
+    "subtitle": "Aqui é o lugar onde eu compartilho minhas ideias e meus aprendizados em público"
+  },
+  "Post": {
+    "readingTime": "{time, number} min de leitura"
+  },
+  "Projects": {
+    "title": "Projetos",
+    "ghProjects": "Projetos do GitHub em destaque"
+  },
+  "Talks": {
+    "title": "Palestras"
+  },
+  "Newsletter": {
+    "title": "Newsletter",
+    "subtitle": "Coletei os links da internet mais interesantes relacionados com meus assuntos favoritos. Dá uma olhadinha e compartilhe comigo sua opinião ",
+    "latest": "Dá uma olhada na última newsletter"
+  },
+  "Admin": {
+    "title": "Admin",
+    "create": "Nova Edição",
+    "edit": "Editar",
+    "delete": "Deletar",
+    "actions": "Ações",
+    "empty": "Nenhuma edição criada ainda... cria a primeira :)",
+    "confirm": {
+      "delete": "Gostaria de deletar esta edição?"
+    }
+  },
+  "Issue": {
+    "action": "Salvar",
+    "reset": "Cancelar",
+    "append": "Novo Artigo",
+    "remove": "Remover este artigo",
+    "title": {
+      "label": "Titulo",
+      "placeholder": "Titulo para está nova edição"
+    },
+    "publishedDate": {
+      "label": "Data de publicação"
+    },
+    "articles": {
+      "label": "Artigos",
+      "title": {
+        "label": "Titulo",
+        "placeholder": "Um pequeno descritivo do link"
+      },
+      "description": {
+        "label": "Descrição",
+        "placeholder": "Sobre o que é este link?"
+      },
+      "url": {
+        "label": "URL",
+        "placeholder": "Onde posso encontrar esse conteúdo?"
+      }
+    }
+  },
+  "CreateNewsletter": {
+    "title": "Criar Edição"
+  },
+  "UpdateNewsletter": {
+    "title": "Atualizar Edição"
+  },
+  "About": {
+    "title": "Prazer em te conhecer!",
+    "welcome": "Meu nome é Marcos Bérgamo",
+    "short-intro": "Eu poderia escrever um grande ensaio sobre a mim mesmo, mas isso não iria chamar sua atenção, provavelmente por que seria bem entendiante, então vamos aos fatos que são mais interessantes.",
+    "professional-title": "Experiência Profissional",
+    "professional-description": "Sou um Engenheiro de Software desde 2011, ajudando empresas a entregar soluções de alta qualidade em diferentes areas.\n\nVocê pode dar uma olhada no meu curriculo se você está interessado nessas aventuras :)",
+    "writings-title": "Escritas",
+    "writings-description": "Como mencionei na página principal, eu também sou um escritor, não apenas de software, mas na minha adolescência escrevi dezenas de poemas e pequenasa crônicas entre outros tipos de histórias curtas. \n\n Originalmente estes eram postados em 2 blogs que eu criei na época, o design é terrivel, era a minha primeira experiência com a internet.",
+    "book-description": "Do blog com os poemas, eu os coletei e fiz um livro com eles sob meu pseudonimo Vinicius Bérgamo (Eu sou um grande fã de Vinicius de Moraes e já que compartilhamos um nome, achei que seria uma boa ideia)"
+  },
+  "Contact": {
+    "title": "Contato"
+  }
+}
