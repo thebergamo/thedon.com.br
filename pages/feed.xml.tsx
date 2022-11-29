@@ -1,4 +1,4 @@
-import { fetchPosts } from 'api/posts'
+import { getAllPosts } from 'lib/blog'
 import RSS from 'rss'
 
 /* @ts-ignore */
@@ -9,16 +9,22 @@ export async function getServerSideProps({ res }) {
     feed_url: 'https://thedon.com.br/feed.xml',
   })
 
-  const allPosts = await fetchPosts({ limit: 1000 })
-  // /* @ts-ignore */
-  // allPosts.docs.forEach((post) => {
-  //   feed.item({
-  //     title: post.title,
-  //     url: `https://thedon.com.br/blog/${post.slug}`,
-  //     date: post.publishedDate,
-  //     description: post.excerpt,
-  //   })
-  // })
+  const posts = getAllPosts([
+    'slug',
+    'title',
+    'url',
+    'publishedDate',
+    'description',
+  ])
+  /* @ts-ignore */
+  posts.docs.forEach((post) => {
+    feed.item({
+      title: post.title,
+      url: `https://thedon.com.br/blog/${post.slug}`,
+      date: post.publishedDate,
+      description: post.excerpt,
+    })
+  })
 
   res.setHeader('Content-Type', 'application/rss+xml')
   res.setHeader(

@@ -90,6 +90,12 @@ const issues: Issue[] = [
           "A project founded by the original creator of Babel naturally provokes interest. Rome’s ambitious mission is to unify all the frontend dev tools you’d need into one, and formatting and linting is where they’ve started with this curiously numbered release. Shouldn't it should be Rome X? 😁",
         url: 'https://javascriptweekly.com/link/131605/0069e2bb5b',
       },
+      {
+        title: 'Rome v10: Rust-Powered JS Linting and Formatting',
+        description:
+          "A project founded by the original creator of Babel naturally provokes interest. Rome’s ambitious mission is to unify all the frontend dev tools you’d need into one, and formatting and linting is where they’ve started with this curiously numbered release. Shouldn't it should be Rome X? 😁",
+        url: 'https://javascriptweekly.com/link/131605/0069e2bb5b',
+      },
     ],
   },
 ]
@@ -148,6 +154,12 @@ const newsletter = [
           ...issue,
         })
       )
+    }
+  ),
+  rest.delete(
+    `${process.env.NEXT_PUBLIC_BACKEND_API}/newsletters/1`,
+    async (req, res, ctx) => {
+      return res(ctx.delay(500), ctx.status(200))
     }
   ),
   rest.patch(

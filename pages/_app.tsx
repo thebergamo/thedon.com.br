@@ -5,12 +5,16 @@ import { SessionProvider, useSession } from 'next-auth/react'
 
 import type { AppProps } from 'next/app'
 import { NextPage } from 'next'
-import { PropsWithChildren, ReactElement, ReactNode } from 'react'
+import { PropsWithChildren, ReactElement, ReactNode, useState } from 'react'
 import Root from 'components/Layout/Root'
 import { ScrollInfoProvider } from '@faceless-ui/scroll-info'
 import { WindowInfoProvider } from '@faceless-ui/window-info'
 import { Session } from 'next-auth'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { NextIntlProvider } from 'next-intl'
 import { useRouter } from 'next/router'
 
@@ -18,17 +22,15 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
   require('../mocks')
 }
 
-// Create a client
-const queryClient = new QueryClient()
-
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode
+  Layout?: typeof Root
   auth?: boolean
 }
 
 type PageProps = {
   messages: IntlMessages
   session?: Session
+  dehydratedState?: unknown
 }
 
 type AppPropsWithLayout = AppProps<PageProps> & {
@@ -48,21 +50,27 @@ function MyApp({
   Component,
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout || ((page) => page)
+  // Create a client
+  const [queryClient] = useState(() => new QueryClient())
+  const Layout = Component.Layout || Root
   const authenticated = Component.auth || false
   return (
     <ScrollInfoProvider>
       <WindowInfoProvider breakpoints={breakpoints}>
         <QueryClientProvider client={queryClient}>
-          <SessionProvider session={session}>
-            <ThemeProvider attribute="class">
-              <SessionAware authRoute={authenticated}>
-                <NextIntlProvider messages={pageProps.messages}>
-                  <Root>{getLayout(<Component {...pageProps} />)}</Root>
-                </NextIntlProvider>
-              </SessionAware>
-            </ThemeProvider>
-          </SessionProvider>
+          <Hydrate state={pageProps.dehydratedState}>
+            <SessionProvider session={session}>
+              <ThemeProvider attribute="class">
+                <SessionAware authRoute={authenticated}>
+                  <NextIntlProvider messages={pageProps.messages}>
+                    <Layout>
+                      <Component {...pageProps} />
+                    </Layout>
+                  </NextIntlProvider>
+                </SessionAware>
+              </ThemeProvider>
+            </SessionProvider>
+          </Hydrate>
         </QueryClientProvider>
       </WindowInfoProvider>
     </ScrollInfoProvider>

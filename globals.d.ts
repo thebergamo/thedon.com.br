@@ -19,7 +19,6 @@ type Article = {
 type Issue = {
   id: number
   title: string
-  cover?: string
-  publishedDate: string
+  publishedDate?: string
   articles: Article[]
 }

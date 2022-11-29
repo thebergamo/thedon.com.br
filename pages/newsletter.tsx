@@ -3,6 +3,7 @@ import { GetStaticPropsContext } from 'next'
 import Root from 'components/Layout/Root'
 import { useTranslations } from 'next-intl'
 import { IssueList } from 'components/Blocks/IssuesList'
+import { getIssues } from 'lib/newsletter'
 
 export type Props = {
   issues: Issue[]
@@ -32,13 +33,7 @@ NewsletterPage.messages = ['Newsletter', ...Root.messages]
 NewsletterPage.auth = true
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  let issues = []
-  if (process.env.NEXT_PUBLIC_BACKEND_API) {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_API}/newsletters`
-    )
-    issues = await res.json()
-  }
+  const issues = await getIssues({ draft: false })
   return {
     props: {
       issues,

@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import cn from 'classnames'
 import { Calendar } from 'components/Icons/Calendar'
-import Image from 'next/image'
-import { url } from 'inspector'
 import readingTime from 'reading-time'
 import { useTranslations } from 'next-intl'
 import { Clock } from 'components/Icons/Clock'

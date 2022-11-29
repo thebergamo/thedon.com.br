@@ -20,7 +20,8 @@ export const IssueList = ({ title, issues }: Props) => {
         {issues.map((issue) => {
           return (
             <Link
-              href={`/issue/${issue.id}`}
+              key={issue.id}
+              href={`/newsletter/${issue.id}`}
               className="w-full hover:underline"
             >
               <div className="w-full mb-8 p-4">

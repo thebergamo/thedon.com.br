@@ -1,13 +1,12 @@
-import BlogPost from "components/Blog/Posts";
-import { Suspense } from "react";
+import BlogPost from 'components/Blog/Posts'
+import { Suspense } from 'react'
 
 type Props = {
-  title: string;
-  posts: any[];
-};
+  title: string
+  posts: any[]
+}
 
 export const PostList = ({ title, posts }: Props) => {
-  console.log({ posts });
   return (
     <div>
       <Suspense fallback={null}>
@@ -26,9 +25,9 @@ export const PostList = ({ title, posts }: Props) => {
                 publishedDate={post.date}
                 content={post.content}
               />
-            );
+            )
           })}
       </Suspense>
     </div>
-  );
-};
+  )
+}

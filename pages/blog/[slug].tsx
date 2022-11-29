@@ -4,7 +4,6 @@ import Root from 'components/Layout/Root'
 import { useTranslations } from 'next-intl'
 import { convertMarkdownToHtml, getAllPosts, getPostBySlug } from 'lib/blog'
 import PostLayout from 'components/Layout/PostLayout'
-import { ReactElement } from 'react'
 
 export type Props = {
   errorCode?: number
@@ -31,12 +30,10 @@ function BlogPage({ post, errorCode }: Props) {
     : 'https://thedon.com.br/static/images/home-opt.jpg'
 
   return (
-    <div className="container flex flex-col">
-      <div
-        className="prose dark:prose-invert"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
-    </div>
+    <span
+      className="prose dark:prose-invert max-w-prose"
+      dangerouslySetInnerHTML={{ __html: post.content }}
+    />
   )
 }
 
@@ -82,9 +79,7 @@ export async function getStaticProps({
   }
 }
 
-BlogPage.getLayout = function getLayout(page: ReactElement) {
-  return <PostLayout>{page}</PostLayout>
-}
+BlogPage.Layout = PostLayout
 
 export async function getStaticPaths() {
   const posts = getAllPosts(['slug'])

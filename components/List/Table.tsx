@@ -4,13 +4,15 @@ import {
   useReactTable,
   flexRender,
 } from '@tanstack/react-table'
+import { Loader } from 'components/Loader/Loader'
 
 type Props<Data> = {
   columns: ColumnDef<Data, any>[]
   data: Data[]
+  isLoading: boolean
 }
 
-export function Table<Data>({ columns, data }: Props<Data>) {
+export function Table<Data>({ columns, data, isLoading }: Props<Data>) {
   const table = useReactTable({
     columns,
     data,
@@ -31,7 +33,9 @@ export function Table<Data>({ columns, data }: Props<Data>) {
                       <th
                         key={header.id}
                         scope="col"
-                        className="group px-6 py-3 text-left text-xs font-medium dark:text-gray-500 text-gray-200 uppercase tracking-wider"
+                        className={`group px-6 py-3 text-left font-medium dark:text-gray-500 text-gray-200 uppercase tracking-wider ${
+                          header.column.columnDef.size === -1 ? 'w-full' : ''
+                        }`}
                       >
                         {/* TODO: Add sort */}
                         {header.isPlaceholder
@@ -54,7 +58,7 @@ export function Table<Data>({ columns, data }: Props<Data>) {
                         className="px-6 py-4 whitespace-nowrap"
                         role="cell"
                       >
-                        <div className="text-sm">
+                        <div className="text-lg">
                           {flexRender(
                             cell.column.columnDef.cell,
                             cell.getContext()
@@ -66,6 +70,7 @@ export function Table<Data>({ columns, data }: Props<Data>) {
                 ))}
               </tbody>
             </table>
+            {isLoading && <Loader />}
           </div>
         </div>
       </div>

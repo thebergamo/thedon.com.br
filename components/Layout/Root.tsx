@@ -47,7 +47,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         className="flex flex-col justify-center px-8 bg-gray-50  dark:bg-gray-900"
       >
         <Header />
-        <div className="flex flex-col justify-center items-start mx-auto max-w-4xl pb-16">
+        <div className="flex flex-col justify-center items-start self-center max-w-4xl pb-16">
           {children}
           <Subscribe />
         </div>

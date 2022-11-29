@@ -49,11 +49,39 @@
     "create": "Nova Edição",
     "edit": "Editar",
     "delete": "Deletar",
-    "actions": "Ações"
+    "actions": "Ações",
+    "empty": "Nenhuma edição criada ainda... cria a primeira :)",
+    "confirm": {
+      "delete": "Gostaria de deletar esta edição?"
+    }
   },
   "Issue": {
-    "title": "Titulo",
-    "publishedDate": "Data de Publicação"
+    "action": "Salvar",
+    "reset": "Cancelar",
+    "append": "Novo Artigo",
+    "remove": "Remover este artigo",
+    "title": {
+      "label": "Titulo",
+      "placeholder": "Titulo para está nova edição"
+    },
+    "publishedDate": {
+      "label": "Data de publicação"
+    },
+    "articles": {
+      "label": "Artigos",
+      "title": {
+        "label": "Titulo",
+        "placeholder": "Um pequeno descritivo do link"
+      },
+      "description": {
+        "label": "Descrição",
+        "placeholder": "Sobre o que é este link?"
+      },
+      "url": {
+        "label": "URL",
+        "placeholder": "Onde posso encontrar esse conteúdo?"
+      }
+    }
   },
   "CreateNewsletter": {
     "title": "Criar Edição"

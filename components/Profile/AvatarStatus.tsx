@@ -67,8 +67,6 @@ export function AvatarStatus() {
     return null
   }
 
-  console.log('data', { data })
-
   return (
     <div className="">
       {isAuthenticated ? (

@@ -5,28 +5,35 @@ import { useTranslations } from 'next-intl'
 import { Table } from 'components/List/Table'
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table'
 import Link from 'next/link'
-import { Exit } from 'components/Icons/Exit'
 import { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { formatDate } from 'utils/formatDate'
+import { LoadableAction } from 'components/LoadableButton/LoadableButton'
 import {
-  LoadableAction,
-  LoadableButton,
-} from 'components/LoadableButton/LoadableButton'
-import { useMutation } from '@tanstack/react-query'
+  dehydrate,
+  QueryClient,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query'
+import { Delete } from 'components/Icons/Delete'
+import { Edit } from 'components/Icons/Edit'
+import { deleteIssue, getIssues } from 'lib/newsletter'
+import classNames from 'classnames'
 
-export type Props = {
-  newsletters: Issue[]
-}
+export type Props = {}
 
-const columnHelper = createColumnHelper<Issue>()
-
-const EditButton = ({ id }: { id: number }) => {
+const EditButton = ({ id, isLoading }: { id: number; isLoading?: boolean }) => {
   const t = useTranslations('Admin')
   return (
-    <Link href={`/admin/${id}`} className="flex hover:text-gray-400">
+    <Link
+      href={`/admin/${id}`}
+      className={`flex hover:text-gray-400 ${
+        isLoading ? 'pointer-events-none' : ''
+      }`}
+    >
       <span className="h-5 w-5 mr-2">
-        <Exit />
+        <Edit />
       </span>
       {t('edit')}
     </Link>
@@ -34,34 +41,60 @@ const EditButton = ({ id }: { id: number }) => {
 }
 
 const DeleteButton = ({
-  id,
   onClick,
   isLoading,
 }: {
-  id: number
   isLoading: boolean
   onClick: () => void
 }) => {
   const t = useTranslations('Admin')
   return (
-    <LoadableAction Icon={<Exit />} isLoading={isLoading} onClick={onClick}>
+    <LoadableAction Icon={<Delete />} isLoading={isLoading} onClick={onClick}>
       {t('delete')}
     </LoadableAction>
   )
 }
 
+const issuesQueryKey = ['issues', { draft: true }]
+
 function AdminPage(props: Props) {
   const t = useTranslations('Admin')
   const ti = useTranslations('Issue')
   const { locale } = useRouter()
+  const queryClient = useQueryClient()
+  const { data = [], isLoading } = useQuery({
+    queryKey: issuesQueryKey,
+    queryFn: () => getIssues({ draft: true }),
+  })
 
   const mutation = useMutation({
-    mutationFn: (id) => {
-      return fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/newsletter/${id}`, {
-        method: 'DELETE',
+    mutationFn: deleteIssue,
+    onMutate: async (id: number) => {
+      await queryClient.cancelQueries({ queryKey: issuesQueryKey })
+
+      const previousData = queryClient.getQueriesData(issuesQueryKey)
+
+      queryClient.setQueryData<Issue[]>(issuesQueryKey, (old) => {
+        const filtered = old?.filter((o) => o.id !== id)
+        return filtered
       })
+      queryClient.getQueriesData(issuesQueryKey)
+
+      return { previousData }
+    },
+    onError: (_err, _newData, context) => {
+      queryClient.setQueryData(issuesQueryKey, context?.previousData)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: issuesQueryKey })
     },
   })
+
+  const handleDelete = (id: number) => {
+    if (confirm(t('confirm.delete'))) {
+      return mutation.mutateAsync(id)
+    }
+  }
 
   const columns = useMemo<ColumnDef<Issue>[]>(
     () => [
@@ -73,16 +106,26 @@ function AdminPage(props: Props) {
       },
       {
         accessorKey: 'title',
-        header: ti('title'),
+        header: ti('title.label'),
+        size: -1,
         cell: (info) => info.renderValue(),
         footer: (info) => info.column.id,
       },
       {
         accessorKey: 'publishedDate',
-        header: ti('publishedDate'),
-        cell: (info) => (
-          <span>{formatDate(info.renderValue() as string, locale)}</span>
-        ),
+        header: ti('publishedDate.label'),
+        cell: (info) => {
+          let renderValue = ''
+          const value = info.renderValue() as string
+
+          if (value) {
+            renderValue = formatDate(value, locale)
+          } else {
+            renderValue = '-'
+          }
+
+          return <span>{renderValue}</span>
+        },
         footer: (info) => info.column.id,
       },
       {
@@ -92,9 +135,8 @@ function AdminPage(props: Props) {
           <span className="flex gap-3">
             <EditButton id={row.getValue('id')} />
             <DeleteButton
-              id={row.getValue('id')}
               isLoading={mutation.isLoading}
-              onClick={() => mutation.mutate(row.getValue('id'))}
+              onClick={() => handleDelete(row.getValue('id'))}
             />
           </span>
         ),
@@ -102,13 +144,10 @@ function AdminPage(props: Props) {
     ],
     []
   )
+
   return (
-    <div className="w-full flex flex-col">
-      <section className="mb-16 flex flex-col lg:flex-row lg:text-left text-center items-center">
-        <div className="flex flex-col">
-          <h1>{t('title')}</h1>
-        </div>
-      </section>
+    <div className="w-full md:w-[640px] lg:w-[820px]">
+      <h1>{t('title')}</h1>
       <div className="flex justify-end">
         <Link
           href={'/admin/create'}
@@ -118,7 +157,12 @@ function AdminPage(props: Props) {
           {t('create')}
         </Link>
       </div>
-      <Table<Issue> data={props.newsletters} columns={columns} />
+      <Table<Issue> data={data} columns={columns} isLoading={isLoading} />
+      {data.length === 0 && (
+        <div className="flex justify-center mt-4">
+          <p className="text-2xl">{t('empty')}</p>
+        </div>
+      )}
     </div>
   )
 }
@@ -128,13 +172,15 @@ export default AdminPage
 AdminPage.messages = ['Admin', 'Issue', ...Root.messages]
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_API}/newsletters?draft=true`
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery(issuesQueryKey, () =>
+    getIssues({ draft: true })
   )
-  const newsletters = await res.json()
+
   return {
     props: {
-      newsletters,
+      dehydratedState: dehydrate(queryClient),
       messages: pick(
         await import(`../../messages/${locale}.json`),
         AdminPage.messages

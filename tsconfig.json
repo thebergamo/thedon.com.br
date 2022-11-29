@@ -24,7 +24,6 @@
   "include": [
     "next-env.d.ts",
     "globals.d.ts",
-    "payload.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"

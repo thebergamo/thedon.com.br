@@ -2,21 +2,20 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Install dependencies - I recommend to use [PNPM](https://pnpm.io/) instead of NPM as it has better performance and module resolution.
+If you don't have it, get take a look into its [installation page](https://pnpm.io/installation) (its simple)
+
+```
+pnpm install
+```
+
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Learn More
 
@@ -26,6 +25,34 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+This project also uses TailwindCSS, take a look at the following resources:
+
+- [TailwindCSS Documentation](https://tailwindcss.com/) - Check it out the endpoints
+
+To make running things locally easier, it also uses MSW (Mock Service Worker) to provide mocks to external APIs
+
+- [MSW](https://mswjs.io/) - Check it out the documentation
+
+Other tools that worth a look:
+
+- [React Hook Form](https://react-hook-form.com/)
+- [Next Intl](https://next-intl-docs.vercel.app/)
+- [Next-Auth](https://next-auth.js.org/)
+- [TanStack/React-Query](https://tanstack.com/query/v4)
+- [TanStack/React-Table](https://tanstack.com/table/v8)
+
+Thinks that improve quality and standarization of the project:
+
+- [ESLint](https://eslint.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Prettier](https://prettier.io/)
+
+Future improvements would have for testing:
+
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Cypress](https://www.cypress.io/)
 
 ## Deploy on Vercel
 

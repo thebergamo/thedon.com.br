@@ -49,17 +49,45 @@
     "create": "New Issue",
     "edit": "Edit",
     "delete": "Delete",
+    "empty": "No issues created yet... create the first one :)",
+    "confirm": {
+      "delete": "Would you like to delete this issue?"
+    },
     "actions": "Actions"
   },
   "Issue": {
-    "title": "Title",
-    "publishedDate": "Published Date"
+    "action": "Save",
+    "reset": "Cancel",
+    "append": "New Article",
+    "remove": "Remove this article",
+    "title": {
+      "label": "Title",
+      "placeholder": "Title for this new issue"
+    },
+    "publishedDate": {
+      "label": "Published Date"
+    },
+    "articles": {
+      "label": "Articles",
+      "title": {
+        "label": "Title",
+        "placeholder": "Short summary of the link"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "What is the thing about this link?"
+      },
+      "url": {
+        "label": "URL",
+        "placeholder": "Where to find this content?"
+      }
+    }
   },
   "CreateNewsletter": {
     "title": "Create Issue"
   },
   "UpdateNewsletter": {
-    "title": "Update Newsletter"
+    "title": "Update Issue"
   },
   "About": {
     "title": "Nice to meet you!",

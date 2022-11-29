@@ -10,7 +10,7 @@ function AboutPage(props: Props) {
   const t = useTranslations('About')
   return (
     <div className="w-full flex flex-col">
-      <section className="mb-16 flex flex-col lg:flex-row lg:text-left text-center items-center">
+      <section className="mb-16 flex flex-col text-center items-center">
         <div className="items-center">
           <Image
             src="/avatar.png"

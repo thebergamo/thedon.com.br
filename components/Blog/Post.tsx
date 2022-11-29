@@ -21,13 +21,13 @@ export const PostHeader: React.FC<{
   const t = useTranslations('Post')
   const stats = readingTime(content)
   return (
-    <div className="h-screen w-1/2 lg:w-full -mb-52">
+    <div className="h-screen flex justify-center flex-col">
+      <h1 className="lg:text-7xl text-4xl text-center z-30">{title}</h1>
       <span
-        className="absolute right-0 top-0 opacity-20 h-screen bg-cover bg-center w-full"
+        className="absolute right-0 top-0 opacity-20 h-screen bg-cover bg-center w-full z-0"
         style={{ backgroundImage: `url(${image})` }}
       />
-      <h1 className="text-7xl relative mt-40">{title}</h1>
-      <div className="flex justify-center lg:text-2xl mt-20">
+      <div className="flex justify-center lg:text-2xl mb-8 mt-12 z-30">
         <div className="flex items-center  text-gray-800 dark:text-gray-200 capsize mr-8">
           <Calendar />
           <span className="ml-2 align-baseline capsize">{date}</span>
@@ -44,7 +44,11 @@ export const PostHeader: React.FC<{
 }
 
 export const PostContent: React.FC<PropsWithChildren> = ({ children }) => {
-  return <article className="w-1/2 lg:w-full">{children}</article>
+  return (
+    <div className="lg:flex lg:justify-center">
+      <div className="lg:max-w-4xl">{children}</div>
+    </div>
+  )
 }
 
 export const PostContainer: React.FC<PropsWithChildren> = ({ children }) => {
