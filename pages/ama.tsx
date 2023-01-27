@@ -1,7 +1,8 @@
 import cn from 'classnames'
 import Root from 'components/Layout/Root'
 import pick from 'lodash/pick'
-import { GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
+import { unstable_getServerSession } from 'next-auth/next'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
@@ -9,6 +10,7 @@ import { FeaturedElement } from '../components/Blocks/FeaturedElement'
 import QuestionCard from '../components/Question/QuestionCard'
 import { QuestionList } from '../components/Question/QuestionList'
 import { getFeaturedQuestions, getQuestions } from '../lib/read-questions'
+import { authOptions } from './api/auth/[...nextauth]'
 
 export type Props = {
   featuredQuestions: Question[]
@@ -76,10 +78,15 @@ export default AMAPage
 
 AMAPage.messages = ['AMA', ...Root.messages]
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const session = await unstable_getServerSession(ctx.req, ctx.res, authOptions)
+
+  const { locale } = ctx
+  const isLogged = Boolean(session)
+
   const [featuredQuestions, questions] = await Promise.all([
-    getFeaturedQuestions(),
-    getQuestions({ limit: 10, offset: 0 }),
+    getFeaturedQuestions(isLogged),
+    getQuestions({ limit: 10, offset: 0 }, isLogged),
   ])
 
   console.log(questions)

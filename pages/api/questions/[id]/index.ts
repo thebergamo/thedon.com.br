@@ -12,18 +12,18 @@ export default async function handler(
 ) {
   const session = await unstable_getServerSession(req, res, authOptions)
 
-  if (!session) {
-    return res.status(401).json({
-      status: 401,
-      message: 'You must be authenticated',
-    })
-  }
-
   const questionId = req.query.id as string
   if (req.method === 'GET') {
     const response = await getQuestion(questionId)
 
     return res.status(200).json(response)
+  }
+
+  if (!session) {
+    return res.status(401).json({
+      status: 401,
+      message: 'You must be authenticated',
+    })
   }
 
   if (['PATCH', 'PUT'].includes(<string>req.method)) {
