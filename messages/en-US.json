@@ -1,0 +1,153 @@
+{
+  "Root": {},
+  "Header": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "talks": "Talks",
+    "newsletter": "Newsletter",
+    "about": "About",
+    "contact": "Contact",
+    "admin": "Admin",
+    "becomeMember": "Become Member",
+    "ama": "AMA"
+  },
+  "404": {
+    "title": "Oh no ;(",
+    "missing": "No worries, it happens... I'm usually also lost.",
+    "suggestion": "Take a deep breath and maybe try visiting my home page again"
+  },
+  "Footer": {
+    "home": "Home",
+    "blog": "Blog",
+    "talks": "Talks",
+    "newsletter": "Newsletter",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "Home": {
+    "greeting": "I'm Marcos Bérgamo",
+    "work-title": "Software Architect at ",
+    "company": "EPAM Systems",
+    "description": "I'm a writer, mostly software writer, but used to write some poetry and many short stories (not all of them finished 😢)"
+  },
+  "Blog": {
+    "title": "Learn, Practice and Share",
+    "subtitle": "This is the place where I share my thoughs and my learnings in public"
+  },
+  "Post": {
+    "readingTime": "{time, number} min read"
+  },
+  "Projects": {
+    "title": "Projects",
+    "ghProjects": "Featured GitHub Projects"
+  },
+  "Talks": {
+    "title": "Talks"
+  },
+  "AMA": {
+    "title": "Ask Me Anything",
+    "subtitle": "Here is a space where we can build a community together and share more knowledge",
+    "Actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "makingPrivate": "Making Private...",
+      "makePrivate": "Make Private",
+      "makingPublic": "Making Public...",
+      "makePublic": "Make Public",
+      "featuring": "Making Featured...",
+      "featured": "Make Featured",
+      "unfeaturing": "Making Unfeatured...",
+      "unfeatured": "Make Unfeatured"
+    },
+    "Answer": {
+      "content": {
+        "placeholder": "You can help by creating an answer"
+      },
+      "action": "Submit Answer"
+    },
+    "Question": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Meaningful title helps to get the point"
+      },
+      "content": {
+        "label": "Content",
+        "placeholder": "Feel free to describe your question in more details using Markdown"
+      },
+      "action": "Save",
+      "actionProgress": "Saving...",
+      "reset": "Cancel"
+    }
+  },
+  "CreateQuestion": {
+    "title": "Ask your question"
+  },
+  "UpdateQuestion": {
+    "title": "Update your question"
+  },
+  "Newsletter": {
+    "title": "Newsletter",
+    "subtitle": "I have collected the most interesting links on the internet related to some of my interests.\nTake a look and share with me your feedback ",
+    "latest": "Check out the latest newsletter"
+  },
+  "Admin": {
+    "title": "Admin",
+    "create": "New Issue",
+    "edit": "Edit",
+    "delete": "Delete",
+    "empty": "No issues created yet... create the first one :)",
+    "confirm": {
+      "delete": "Would you like to delete this issue?"
+    },
+    "actions": "Actions"
+  },
+  "Issue": {
+    "action": "Save",
+    "reset": "Cancel",
+    "append": "New Article",
+    "remove": "Remove this article",
+    "title": {
+      "label": "Title",
+      "placeholder": "Title for this new issue"
+    },
+    "publishedDate": {
+      "label": "Published Date"
+    },
+    "articles": {
+      "label": "Articles",
+      "title": {
+        "label": "Title",
+        "placeholder": "Short summary of the link"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "What is the thing about this link?"
+      },
+      "url": {
+        "label": "URL",
+        "placeholder": "Where to find this content?"
+      }
+    }
+  },
+  "CreateNewsletter": {
+    "title": "Create Issue"
+  },
+  "UpdateNewsletter": {
+    "title": "Update Issue"
+  },
+  "About": {
+    "title": "Nice to meet you!",
+    "welcome": "My name is Marcos Bérgamo",
+    "short-intro": "I could write a big essay about myself but it wouldn't catch your attention, probably because it would be too boring, so I will try to just catch some facts that you may find interesting.",
+    "professional-title": "Professional Experience",
+    "professional-description": "I've been working as a Software Engineer since 2011 helping companies to deliver high quality solutions in different areas. \n\nYou can check my resume if you're interested in those adventures :)",
+    "writings-title": "Writings",
+    "writings-description": "As I mentioned in the homepage, I'm also a writer, not only software one, but in my teenage I wrote dozens of Poems and many other short chronicles and other types of short stories.\n\nOriginally they where posted in two blogs that I created early on, design is terrible, it was my first experience with the internet as a thing.\n(Both blogs are in Portuguese)",
+    "book-description": "From the Poems above I collect them and made a book under my pseudonym Vinicius Bérgamo (Just because I'm fan of Vinicius de Moraes as we share some name, thought it would be a good idea)"
+  },
+  "Contact": {
+    "title": "Contact"
+  }
+}
