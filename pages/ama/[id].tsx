@@ -255,7 +255,7 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths() {
-  const questions = await getQuestions({ limit: 100, offset: 0 })
+  const questions = await getQuestions({ limit: 100, offset: 0 }, false)
 
   const paths = questions.map((question) => ({
     params: {
