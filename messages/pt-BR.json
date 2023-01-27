@@ -80,6 +80,7 @@
       "action": "Salvar",
       "actionProgress": "Salvando...",
       "reset": "Cancelar"
+    }
   },
   "Newsletter": {
     "title": "Newsletter",
