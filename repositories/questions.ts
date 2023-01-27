@@ -60,6 +60,7 @@ export async function get(id: string) {
 
 export async function create(question: Question) {
   const newQuestion = await prisma.question.create({
+    // @ts-ignore
     data: question,
   })
 
@@ -68,6 +69,7 @@ export async function create(question: Question) {
 
 export async function update(id: string, question: Partial<Question>) {
   const updated = await prisma.question.update({
+    // @ts-ignore
     data: {
       ...question,
       updatedAt: new Date(),

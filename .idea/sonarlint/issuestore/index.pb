@@ -19,8 +19,6 @@ I
 pages/_app.tsx,5/5/550528cc072fa7d76d123e2f4303d4ab39daa8e8
 =
 tsconfig.json,6/1/61ebb9fd6e8cf9082658121d5d81e297791dacd0
-C
-messages/pt-BR.json,5/8/58bb3527207aa00b4ed150fe09213772f8af7411
 S
 #components/Blocks/FeaturedPosts.tsx,e/b/eb64f87af1a439d36f73c56a295330b7adaa1b0f
 J
@@ -43,5 +41,3 @@ R
 "components/SearchBox/SearchBox.tsx,0/d/0d093635d0a48eee2a66c01d816b3d93e2d88057
 D
 pages/admin/[id].tsx,e/1/e184d3c02fddb0c98f0a8738de8cd13e29bb2a0a
-N
-components/Issue/IssueForm.tsx,8/0/8027fd85cd26474326cf59f484506cdf7a0fef2b

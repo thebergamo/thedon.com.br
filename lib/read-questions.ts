@@ -16,7 +16,7 @@ export async function getQuestions({
   return questionsRepo.list({}, { limit, offset })
 }
 
-export async function getQuestion(id: string): Promise<Question> {
+export async function getQuestion(id: string) {
   const question = await questionsRepo.get(id)
 
   if (!question) {

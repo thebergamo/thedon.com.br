@@ -31,15 +31,16 @@ export default async function handler(
     content: req.body.content,
     updatedAt: createdAt,
     createdAt,
+    // @ts-ignore
     ownerId: session.user.id,
   }
 
-  console.log('LOL', question)
   question.answers.push(answer)
-  console.log('LOL', question.answers)
 
   await questionRepo.update(questionId, {
-    answers: question.answers.map(({ owner, ...a }) => a),
+    // @ts-ignore
+    // eslint-disable-next-line no-unused-vars
+    answers: question.answers.map(({ owner, ...a }: Question) => a),
   })
 
   const response = await getQuestion(questionId)

@@ -63,7 +63,8 @@
     },
     "Answer": {
       "content": {
-        "placeholder": "You can help by creating an answer"
+        "placeholder": "You can help by creating an answer",
+        "label": "Content"
       },
       "action": "Submit Answer"
     },

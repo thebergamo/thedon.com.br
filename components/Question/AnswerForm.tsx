@@ -11,9 +11,10 @@ const AnswerFormSchema = Yup.object().shape({
   content: Yup.string().required(),
 })
 
-type AnswerFormValues = Omit<Question, 'id'>
+type AnswerFormValues = { content: string }
 type Props = {
   data?: AnswerFormValues
+  // eslint-disable-next-line no-unused-vars
   handleAction: (values: AnswerFormValues) => Promise<void>
 }
 
@@ -29,7 +30,6 @@ export default function AnswerForm({ data, handleAction }: Props) {
 
   const {
     handleSubmit,
-    formState,
     formState: { isSubmitting, isSubmitSuccessful },
     control,
     reset,
@@ -43,7 +43,7 @@ export default function AnswerForm({ data, handleAction }: Props) {
     if (isSubmitSuccessful) {
       reset({})
     }
-  }, [formState, reset])
+  }, [isSubmitSuccessful, reset])
 
   const onSubmit: SubmitHandler<AnswerFormValues> = async (answerValues) => {
     try {

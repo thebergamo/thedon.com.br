@@ -38,6 +38,7 @@ export async function fetchPinnedRepos() {
 
   const body = await response.json()
   const repos = body?.data?.user?.pinnedItems?.nodes?.map(
+    // @ts-ignore
     ({ name, description, primaryLanguage, stargazerCount, url }) => ({
       name,
       description,

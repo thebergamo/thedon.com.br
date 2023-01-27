@@ -16,8 +16,8 @@ type NavItemProps = {
 
 function NavItem({ href, text }: NavItemProps) {
   const router = useRouter()
-  const [_s, page] = href.split('/')
-  const [_a, currentPage] = router.asPath.split('/')
+  const [, page] = href.split('/')
+  const [, currentPage] = router.asPath.split('/')
   const isActive = currentPage === page
 
   return (

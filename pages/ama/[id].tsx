@@ -10,9 +10,7 @@ import pick from 'lodash/pick'
 import { GetStaticPropsContext } from 'next'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { useState } from 'react'
 import { Bolt, Unbolt } from '../../components/Icons/Bolt'
 import { Calendar } from '../../components/Icons/Calendar'
 import { Comments, EmptyComment } from '../../components/Icons/Comments'
@@ -33,31 +31,24 @@ import {
 } from '../../lib/manage-questions'
 import { getQuestion, getQuestions } from '../../lib/read-questions'
 
-const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
-  ssr: false,
-})
-
 export type Props = {
   questionId: string
 }
 
-function Editor({ id }) {
+function Editor({ id }: { id: string }) {
   const queryClient = useQueryClient()
-  const [answer, setAnswer] = useState('')
   const answerMutation = useMutation({
     mutationFn: addAnswer,
     onSuccess(data) {
       queryClient.setQueryData(['questions', id], (old) => ({
-        ...old,
+        ...(old ? old : {}),
         ...data,
       }))
     },
   })
 
-  const handleSubmit = async (data) => {
+  const handleSubmit = async (data: { content: string }) => {
     await answerMutation.mutateAsync({ id, ...data })
-
-    setAnswer('')
   }
 
   return (
@@ -83,7 +74,7 @@ function QuestionActions({
     mutationFn: makeFeatured,
     onSuccess(data) {
       queryClient.setQueryData(['questions', question.id], (old) => ({
-        ...old,
+        ...(old ? old : {}),
         status: data.status,
       }))
     },
@@ -92,7 +83,7 @@ function QuestionActions({
     mutationFn: makePrivate,
     onSuccess(data) {
       queryClient.setQueryData(['questions', question.id], (old) => ({
-        ...old,
+        ...(old ? old : {}),
         private: data.private,
       }))
     },
@@ -167,10 +158,11 @@ function QuestionPage({ questionId }: Props) {
     return <h1>Loading...</h1>
   }
 
-  console.log({ question })
-
+  // @ts-ignore
   const date = question.createdAt.split('T')[0]
+  // @ts-ignore
   const isAdmin = data?.user.roles.includes('admin')
+  // @ts-ignore
   const canManage = question.ownerId === data?.user.id || isAdmin
 
   return (
@@ -209,6 +201,7 @@ function QuestionPage({ questionId }: Props) {
         </h2>
         <div className="mb-4">
           {question.answers.length > 0 && (
+            // @ts-ignore
             <AnswerList data={question.answers} />
           )}
           {question.answers.length === 0 && (

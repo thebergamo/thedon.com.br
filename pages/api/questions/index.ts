@@ -32,10 +32,12 @@ export default async function handler(
     private: false,
     status: 'OPEN',
     owner: {
+      // @ts-ignore
       connect: { id: session.user.id },
     },
   }
 
+  // @ts-ignore
   const result = await questionRepo.create(newQuestion)
 
   res.status(201).json(result)

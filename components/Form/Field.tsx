@@ -1,3 +1,4 @@
+// @ts-ignore
 import type { Editor } from 'codemirror'
 import 'easymde/dist/easymde.min.css'
 import dynamic from 'next/dynamic'

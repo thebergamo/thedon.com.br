@@ -1,14 +1,14 @@
-import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useRouter } from 'next/router'
-import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
-import { useState } from 'react'
-import { SimpleField, TextAreaField } from 'components/Form/Field'
-import { useTranslations } from 'next-intl'
-import { LoadableButton } from 'components/LoadableButton/LoadableButton'
-import { Fire } from 'components/Icons/Fire'
-import { Cross } from 'components/Icons/Cross'
 import classNames from 'classnames'
+import { SimpleField, TextAreaField } from 'components/Form/Field'
+import { Cross } from 'components/Icons/Cross'
+import { Fire } from 'components/Icons/Fire'
+import { LoadableButton } from 'components/LoadableButton/LoadableButton'
+import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
+import * as Yup from 'yup'
 
 const IssueFormSchema = Yup.object().shape({
   article: Yup.array(),
@@ -21,6 +21,7 @@ const IssueFormSchema = Yup.object().shape({
 type IssueFormValues = Omit<Issue, 'id'>
 type Props = {
   data?: IssueFormValues
+  // eslint-disable-next-line no-unused-vars
   handleAction: (issueValues: IssueFormValues) => Promise<void>
 }
 

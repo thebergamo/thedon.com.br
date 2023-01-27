@@ -47,7 +47,39 @@
   },
   "AMA": {
     "title": "Pergunte Qualquer Coisa (AMA)",
-    "subtitle": "Este é um espaco que podemos construir uma comunidade juntos e compartilhar mais conhecimento!"
+    "subtitle": "Este é um espaco que podemos construir uma comunidade juntos e compartilhar mais conhecimento!",
+    "Actions": {
+      "edit": "Editar",
+      "delete": "Deletar",
+      "deleting": "Deletando...",
+      "makingPrivate": "Tornando Privado...",
+      "makePrivate": "Tornar Privado",
+      "makingPublic": "Tornando Público...",
+      "makePublic": "Tornar Público",
+      "featuring": "Destacando...",
+      "featured": "Destacar",
+      "unfeaturing": "Removendo Destaque...",
+      "unfeatured": "Remover Destaque"
+    },
+    "Answer": {
+      "content": {
+        "placeholder": "Você pode contribuir respondendo essa pergunta",
+        "label": "Conteúdo"
+      },
+      "action": "Enviar Resposta"
+    },
+    "Question": {
+      "title": {
+        "label": "Título",
+        "placeholder": "Um título conciso ajuda a entender melhor o seu ponto"
+      },
+      "content": {
+        "label": "COnteúdo",
+        "placeholder": "Sinta-se a vontade para descrever sua pergunta usando Markdown"
+      },
+      "action": "Salvar",
+      "actionProgress": "Salvando...",
+      "reset": "Cancelar"
   },
   "Newsletter": {
     "title": "Newsletter",

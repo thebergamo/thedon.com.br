@@ -15,7 +15,7 @@ function CreateQuestionPage() {
     mutationFn: createQuestion,
   })
 
-  const handleCreate = async (values: Omit<Issue, 'id'>) => {
+  const handleCreate = async (values: Omit<Question, 'id'>) => {
     const question = await mutation.mutateAsync(values)
     await replace(`/ama/${question.id}`)
   }

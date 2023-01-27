@@ -16,7 +16,7 @@ export type Props = {
 function UpdateQuestionPage(props: Props) {
   const t = useTranslations('UpdateQuestion')
   const { push } = useRouter()
-  const { data = {} } = useQuestion(props.id)
+  const { data = { title: 'Bring your title' } } = useQuestion(props.id)
 
   const mutation = useMutation({
     mutationFn: updateQuestion,
@@ -37,6 +37,7 @@ function UpdateQuestionPage(props: Props) {
           </h1>
         </div>
       </section>
+      {/* @ts-ignore */}
       <QuestionForm data={data} handleAction={handleUpdate} />
     </div>
   )
@@ -51,7 +52,7 @@ export async function getServerSideProps({
   locale,
   params,
 }: GetServerSidePropsContext) {
-  const id = (params?.id ?? -1) as number
+  const id = (params?.id ?? '') as string
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery(['questions', id], () => getQuestion(id))

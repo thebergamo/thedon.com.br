@@ -9,7 +9,7 @@ export default function AnswerItem({
   content,
 }: {
   id: string
-  createdAt: Date
+  createdAt: string
   ownerName: string
   ownerPicture: string
   content: string
@@ -36,8 +36,10 @@ export default function AnswerItem({
     </div>
   )
 }
+
+type Data = Omit<Answer, 'createdAt'> & { createdAt: string }
 type Props = {
-  data: Answer[]
+  data: Data[]
 }
 
 export const AnswerList = ({ data }: Props) => {

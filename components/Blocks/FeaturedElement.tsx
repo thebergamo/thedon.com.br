@@ -1,6 +1,7 @@
 type Props<ElementType> = {
   blockName: string
   list: ElementType[]
+  // eslint-disable-next-line no-unused-vars
   element: (elProps: ElementType) => JSX.Element
 }
 

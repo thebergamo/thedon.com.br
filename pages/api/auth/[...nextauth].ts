@@ -25,8 +25,11 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    // eslint-disable-next-line no-unused-vars
     async session({ session, token, user }) {
+      // @ts-ignore
       session.user.id = user.id
+      // @ts-ignore
       session.user.roles = user.roles
 
       return session

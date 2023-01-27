@@ -1,9 +1,8 @@
+import PostLayout from 'components/Layout/PostLayout'
+import Root from 'components/Layout/Root'
+import { convertMarkdownToHtml, getAllPosts, getPostBySlug } from 'lib/blog'
 import pick from 'lodash/pick'
 import { GetStaticPropsContext } from 'next'
-import Root from 'components/Layout/Root'
-import { useTranslations } from 'next-intl'
-import { convertMarkdownToHtml, getAllPosts, getPostBySlug } from 'lib/blog'
-import PostLayout from 'components/Layout/PostLayout'
 
 export type Props = {
   errorCode?: number

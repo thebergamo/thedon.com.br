@@ -16,6 +16,7 @@ const QuestionFormSchema = Yup.object().shape({
 type QuestionFormValues = Omit<Question, 'id'>
 type Props = {
   data?: QuestionFormValues
+  // eslint-disable-next-line no-unused-vars
   handleAction: (values: QuestionFormValues) => Promise<void>
 }
 
@@ -23,6 +24,7 @@ export default function QuestionForm({ data, handleAction }: Props) {
   const { back } = useRouter()
   const t = useTranslations('AMA.Question')
   const [formError, setFormError] = useState<string | undefined>()
+  // @ts-ignore
   const defaultValues: QuestionFormValues = {
     ...{
       title: '',
