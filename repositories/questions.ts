@@ -3,9 +3,16 @@ import { getBulkUsers } from './users'
 
 type QuestionStatus = 'FEATURED' | 'CLOSED' | 'OPEN'
 
+type Contains = {
+  contains: string
+  mode: 'insensitive'
+}
+
 type Criteria = {
   private?: boolean
   status?: QuestionStatus
+  title?: Contains
+  content?: Contains
 }
 
 type Pagination = {
@@ -15,8 +22,27 @@ type Pagination = {
 
 export async function list(criteria: Criteria, pagination?: Pagination) {
   const { limit, offset } = pagination || { limit: 10, offset: 0 }
+
+  const whereClause = JSON.stringify({
+    private: criteria.private,
+    status: criteria.status,
+    OR:
+      criteria.title || criteria.content
+        ? [
+            {
+              title: criteria.title,
+            },
+            {
+              content: criteria.content,
+            },
+          ]
+        : undefined,
+  })
+
+  console.info({ whereClause: JSON.parse(whereClause) })
+
   const questions = await prisma.question.findMany({
-    where: criteria,
+    where: JSON.parse(whereClause),
     take: limit,
     skip: offset,
     include: {

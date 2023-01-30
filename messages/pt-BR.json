@@ -48,6 +48,9 @@
   "AMA": {
     "title": "Pergunte Qualquer Coisa (AMA)",
     "subtitle": "Este é um espaco que podemos construir uma comunidade juntos e compartilhar mais conhecimento!",
+    "AskQuestion": "Faça sua pergunta",
+    "featured": "Perguntas em Destaque",
+    "all":  "Todas as Perguntas",
     "Actions": {
       "edit": "Editar",
       "delete": "Deletar",

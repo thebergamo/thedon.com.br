@@ -23,6 +23,10 @@ h1 {
   @apply font-bold text-3xl md:text-5xl mb-1;
 }
 
+.editor-toolbar button.active, .editor-toolbar button:hover {
+  background: #47a3f3 !important;
+}
+
 /* https://seek-oss.github.io/capsize/ */
 .capsize::before {
   content: "";

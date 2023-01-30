@@ -5,6 +5,31 @@ import { unstable_getServerSession } from 'next-auth/next'
 import * as questionRepo from '../../../repositories/questions'
 import { authOptions } from '../auth/[...nextauth]'
 
+async function createQuestion(question: {
+  title: string
+  content: string
+  ownerId: string
+}) {
+  const createdAt = new Date()
+
+  const newQuestion = {
+    title: question.title,
+    content: question.content,
+    createdAt,
+    updatedAt: createdAt,
+    private: false,
+    status: 'OPEN',
+    owner: {
+      connect: { id: question.ownerId },
+    },
+  }
+
+  // @ts-ignore
+  const result = await questionRepo.create(newQuestion)
+
+  return result
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -18,27 +43,17 @@ export default async function handler(
     })
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405)
+  switch (req.method) {
+    case 'POST':
+      return res.status(201).json(
+        await createQuestion({
+          title: req.body.title,
+          content: req.body.content,
+          // @ts-ignore
+          ownerId: session.user.id,
+        })
+      )
+    default:
+      return res.status(405)
   }
-
-  const createdAt = new Date()
-
-  const newQuestion = {
-    title: req.body.title,
-    content: req.body.content,
-    createdAt,
-    updatedAt: createdAt,
-    private: false,
-    status: 'OPEN',
-    owner: {
-      // @ts-ignore
-      connect: { id: session.user.id },
-    },
-  }
-
-  // @ts-ignore
-  const result = await questionRepo.create(newQuestion)
-
-  res.status(201).json(result)
 }

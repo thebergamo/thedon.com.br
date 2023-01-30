@@ -7,6 +7,24 @@ export async function getFeaturedQuestions(isLogged: boolean) {
   // return questionsList.filter((q) => q.status === 'FEATURED')
 }
 
+export async function searchQuestions(
+  { term }: { term: string },
+  isLogged: boolean
+) {
+  const onlyPublic = isLogged ? {} : { private: false }
+
+  const searchTerm = {
+    contains: term,
+    mode: 'insensitive' as const,
+  }
+
+  return questionsRepo.list({
+    title: searchTerm,
+    content: searchTerm,
+    ...onlyPublic,
+  })
+}
+
 export async function getQuestions(
   {
     limit,

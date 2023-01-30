@@ -23,8 +23,6 @@ S
 #components/Blocks/FeaturedPosts.tsx,e/b/eb64f87af1a439d36f73c56a295330b7adaa1b0f
 J
 components/Icons/Clock.tsx,9/1/9131f8ea9f798b1730ed8a9ac0b23c5fc6f1791b
-L
-components/Blog/PostCard.tsx,f/5/f596d8208b7788ea828fd8eacadfc7bc562a592f
 I
 components/Blog/Posts.tsx,3/b/3b480cbf8f60c0ff5b96ccfa7751bd45754356c6
 N
@@ -37,7 +35,5 @@ Z
 0components/LanguageSwitcher/LanguageSwitcher.tsx,4/7/47355315950be42bd9657db8362dcb9c5de86417
 S
 #components/Icons/MagnifierGlass.tsx,7/8/7826eb62ec733a08fff1d08100e6e21f43f793c5
-R
-"components/SearchBox/SearchBox.tsx,0/d/0d093635d0a48eee2a66c01d816b3d93e2d88057
 D
 pages/admin/[id].tsx,e/1/e184d3c02fddb0c98f0a8738de8cd13e29bb2a0a

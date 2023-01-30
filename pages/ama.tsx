@@ -33,7 +33,7 @@ function AMAPage(props: Props) {
       <div>
         <div>
           <FeaturedElement<Question>
-            blockName="Featured Questions"
+            blockName={t('featured')}
             list={props.featuredQuestions}
             element={(question) => {
               const { title, owner, createdAt, answers, id } = question
@@ -65,10 +65,10 @@ function AMAPage(props: Props) {
               'bg-gradient-to-br from-[#3F2B96] via-[#3B82F6] to-[#A8C0FF]'
             )}
           >
-            Ask your question
+            {t('AskQuestion')}
           </Link>
         </div>
-        <QuestionList title="All Questions" questions={props.questions} />
+        <QuestionList title={t('all')} questions={props.questions} />
       </div>
     </div>
   )

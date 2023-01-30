@@ -48,6 +48,9 @@
   "AMA": {
     "title": "Ask Me Anything",
     "subtitle": "Here is a space where we can build a community together and share more knowledge",
+    "AskQuestion": "Ask your question",
+    "featured": "Featured Questions",
+    "all":  "All Questions",
     "Actions": {
       "edit": "Edit",
       "delete": "Delete",
